@@ -1,0 +1,54 @@
+{
+  "title": "Oxford Shirt Blue",
+  "url": "https://northwind-shirts.example/p/oxford-shirt-blue",
+  "garment_kind": "shirt",
+  "status": "ok",
+  "stretch": "rigid_woven",
+  "classification": {
+    "chart_kind": "body",
+    "measure_basis": "circumference",
+    "unit": "in"
+  },
+  "sizes": [
+    {
+      "size_label": "S",
+      "length_from_center_back": false,
+      "sleeve_from_center_back": false,
+      "measurements": {
+        "chest_width": 51.45,
+        "waist_width": 43.83,
+        "collar": 39.2
+      }
+    },
+    {
+      "size_label": "M",
+      "length_from_center_back": false,
+      "sleeve_from_center_back": false,
+      "measurements": {
+        "chest_width": 56.53,
+        "waist_width": 48.91,
+        "collar": 41.73
+      }
+    },
+    {
+      "size_label": "L",
+      "length_from_center_back": false,
+      "sleeve_from_center_back": false,
+      "measurements": {
+        "chest_width": 61.61,
+        "waist_width": 53.99,
+        "collar": 44.27
+      }
+    },
+    {
+      "size_label": "XL",
+      "length_from_center_back": false,
+      "sleeve_from_center_back": false,
+      "measurements": {
+        "chest_width": 66.69,
+        "waist_width": 59.07,
+        "collar": 46.81
+      }
+    }
+  ]
+}

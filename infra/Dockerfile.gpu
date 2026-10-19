@@ -1,0 +1,13 @@
+# Body-fit worker image. Runs on a rented GPU box; needs the SAM 3D Body weights mounted.
+FROM nvidia/cuda:12.4.1-runtime-ubuntu22.04
+RUN apt-get update && apt-get install -y --no-install-recommends python3.12 python3.12-venv git \
+ && rm -rf /var/lib/apt/lists/*
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
+WORKDIR /app
+COPY pyproject.toml uv.lock ./
+COPY packages ./packages
+COPY services ./services
+RUN uv sync --all-packages --no-dev --frozen \
+ && uv pip install torch --index-url https://download.pytorch.org/whl/cu124
+ENV STYLEID_WEIGHTS_DIR=/weights
+CMD ["uv", "run", "python", "-m", "styleid_bodyfit.worker"]

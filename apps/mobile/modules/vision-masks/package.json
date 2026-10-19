@@ -1,0 +1,11 @@
+{
+  "name": "vision-masks",
+  "version": "0.1.0",
+  "private": true,
+  "description": "style.id local Expo Module: Apple Vision foreground masks, person segmentation and body pose.",
+  "main": "index.ts",
+  "types": "index.ts",
+  "license": "UNLICENSED",
+  "author": "style.id",
+  "homepage": "https://style.id"
+}

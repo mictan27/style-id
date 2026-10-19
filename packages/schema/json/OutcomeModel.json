@@ -1,0 +1,61 @@
+{
+  "$defs": {
+    "Direction": {
+      "enum": [
+        "tight",
+        "loose"
+      ],
+      "title": "Direction",
+      "type": "string"
+    },
+    "Zone": {
+      "description": "Fit zones reported to the user. Ease zones get a label; position zones get a position.",
+      "enum": [
+        "chest",
+        "shoulder",
+        "waist",
+        "hem",
+        "bicep",
+        "collar",
+        "length",
+        "sleeve"
+      ],
+      "title": "Zone",
+      "type": "string"
+    }
+  },
+  "description": "The one post-delivery question: kept or returned, and if returned, which zone and how.",
+  "properties": {
+    "direction": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Direction"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "kept": {
+      "title": "Kept",
+      "type": "boolean"
+    },
+    "zone": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Zone"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    }
+  },
+  "required": [
+    "kept"
+  ],
+  "title": "OutcomeModel",
+  "type": "object"
+}

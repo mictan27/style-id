@@ -1,0 +1,99 @@
+{
+  "page_title": "Linen Camp Shirt",
+  "model_id": "recorded",
+  "extraction": {
+    "found": true,
+    "chart_kind": "body",
+    "measure_basis": "unknown",
+    "unit": "cm",
+    "rows": [
+      {
+        "size_label": "S",
+        "cells": [
+          {
+            "measure": "Chest",
+            "value": 90,
+            "unit": null
+          },
+          {
+            "measure": "Waist",
+            "value": 78,
+            "unit": null
+          },
+          {
+            "measure": "Neck",
+            "value": 37.5,
+            "unit": null
+          }
+        ]
+      },
+      {
+        "size_label": "M",
+        "cells": [
+          {
+            "measure": "Chest",
+            "value": 98,
+            "unit": null
+          },
+          {
+            "measure": "Waist",
+            "value": 86,
+            "unit": null
+          },
+          {
+            "measure": "Neck",
+            "value": 39.5,
+            "unit": null
+          }
+        ]
+      },
+      {
+        "size_label": "L",
+        "cells": [
+          {
+            "measure": "Chest",
+            "value": 106,
+            "unit": null
+          },
+          {
+            "measure": "Waist",
+            "value": 94,
+            "unit": null
+          },
+          {
+            "measure": "Neck",
+            "value": 41.5,
+            "unit": null
+          }
+        ]
+      },
+      {
+        "size_label": "XL",
+        "cells": [
+          {
+            "measure": "Chest",
+            "value": 114,
+            "unit": null
+          },
+          {
+            "measure": "Waist",
+            "value": 102,
+            "unit": null
+          },
+          {
+            "measure": "Neck",
+            "value": 43.5,
+            "unit": null
+          }
+        ]
+      }
+    ],
+    "fabric_composition": "100% European linen",
+    "knit_or_woven": "woven",
+    "cut": null,
+    "length_from": "unknown",
+    "sleeve_from": "unknown",
+    "notes": "Ranges such as 96-100 were recorded as midpoints.",
+    "confidence": "medium"
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "page_title": "Merino Crew Sweater",
+  "model_id": "recorded",
+  "extraction": {
+    "found": true,
+    "chart_kind": "garment",
+    "measure_basis": "circumference",
+    "unit": "cm",
+    "rows": [
+      {
+        "size_label": "XS",
+        "cells": [
+          {
+            "measure": "Chest circumference",
+            "value": 92,
+            "unit": null
+          },
+          {
+            "measure": "Hem circumference",
+            "value": 88,
+            "unit": null
+          },
+          {
+            "measure": "Centre back length",
+            "value": 64,
+            "unit": null
+          },
+          {
+            "measure": "Sleeve length from CB",
+            "value": 78,
+            "unit": null
+          },
+          {
+            "measure": "Shoulder",
+            "value": 40,
+            "unit": null
+          }
+        ]
+      },
+      {
+        "size_label": "S",
+        "cells": [
+          {
+            "measure": "Chest circumference",
+            "value": 96,
+            "unit": null
+          },
+          {
+            "measure": "Hem circumference",
+            "value": 92,
+            "unit": null
+          },
+          {
+            "measure": "Centre back length",
+            "value": 66,
+            "unit": null
+          },
+          {
+            "measure": "Sleeve length from CB",
+            "value": 80,
+            "unit": null
+          },
+          {
+            "measure": "Shoulder",
+            "value": 42,
+            "unit": null
+          }
+        ]
+      },
+      {
+        "size_label": "M",
+        "cells": [
+          {
+            "measure": "Chest circumference",
+            "value": 100,
+            "unit": null
+          },
+          {
+            "measure": "Hem circumference",
+            "value": 96,
+            "unit": null
+          },
+          {
+            "measure": "Centre back length",
+            "value": 68,
+            "unit": null
+          },
+          {
+            "measure": "Sleeve length from CB",
+            "value": 82,
+            "unit": null
+          },
+          {
+            "measure": "Shoulder",
+            "value": 44,
+            "unit": null
+          }
+        ]
+      },
+      {
+        "size_label": "L",
+        "cells": [
+          {
+            "measure": "Chest circumference",
+            "value": 106,
+            "unit": null
+          },
+          {
+            "measure": "Hem circumference",
+            "value": 102,
+            "unit": null
+          },
+          {
+            "measure": "Centre back length",
+            "value": 70,
+            "unit": null
+          },
+          {
+            "measure": "Sleeve length from CB",
+            "value": 84,
+            "unit": null
+          },
+          {
+            "measure": "Shoulder",
+            "value": 46,
+            "unit": null
+          }
+        ]
+      },
+      {
+        "size_label": "XL",
+        "cells": [
+          {
+            "measure": "Chest circumference",
+            "value": 112,
+            "unit": null
+          },
+          {
+            "measure": "Hem circumference",
+            "value": 108,
+            "unit": null
+          },
+          {
+            "measure": "Centre back length",
+            "value": 72,
+            "unit": null
+          },
+          {
+            "measure": "Sleeve length from CB",
+            "value": 86,
+            "unit": null
+          },
+          {
+            "measure": "Shoulder",
+            "value": 48,
+            "unit": null
+          }
+        ]
+      }
+    ],
+    "fabric_composition": "95% merino wool, 5% elastane",
+    "knit_or_woven": "knit",
+    "cut": "drop_shoulder",
+    "length_from": "center_back",
+    "sleeve_from": "center_back",
+    "notes": null,
+    "confidence": "high"
+  }
+}

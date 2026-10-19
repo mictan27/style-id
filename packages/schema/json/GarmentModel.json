@@ -1,0 +1,168 @@
+{
+  "$defs": {
+    "Confidence": {
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ],
+      "title": "Confidence",
+      "type": "string"
+    },
+    "Cut": {
+      "enum": [
+        "set_in",
+        "raglan",
+        "drop_shoulder"
+      ],
+      "title": "Cut",
+      "type": "string"
+    },
+    "GarmentField": {
+      "description": "Garment measurements as laid flat, in cm, following the proposal's schema.",
+      "enum": [
+        "chest_width",
+        "waist_width",
+        "hem_width",
+        "bicep_width",
+        "shoulder_width",
+        "sleeve_length",
+        "length",
+        "collar"
+      ],
+      "title": "GarmentField",
+      "type": "string"
+    },
+    "GarmentKind": {
+      "enum": [
+        "tee",
+        "shirt",
+        "sweater",
+        "hoodie"
+      ],
+      "title": "GarmentKind",
+      "type": "string"
+    },
+    "Label": {
+      "enum": [
+        "tight",
+        "fitted",
+        "regular",
+        "relaxed"
+      ],
+      "title": "Label",
+      "type": "string"
+    },
+    "MeasurementModel": {
+      "description": "One number in cm with where it came from and how much to trust it.",
+      "properties": {
+        "confidence": {
+          "$ref": "#/$defs/Confidence",
+          "default": "medium"
+        },
+        "source": {
+          "$ref": "#/$defs/Source"
+        },
+        "value_cm": {
+          "exclusiveMaximum": 400,
+          "exclusiveMinimum": 0,
+          "title": "Value Cm",
+          "type": "number"
+        }
+      },
+      "required": [
+        "value_cm",
+        "source"
+      ],
+      "title": "MeasurementModel",
+      "type": "object"
+    },
+    "Source": {
+      "description": "Where a measurement came from. Carried on every value.",
+      "enum": [
+        "flatlay",
+        "chart",
+        "brand_ease_estimate",
+        "manual",
+        "lidar",
+        "photo",
+        "size_anchor"
+      ],
+      "title": "Source",
+      "type": "string"
+    },
+    "StretchClass": {
+      "enum": [
+        "rigid_woven",
+        "woven_elastane",
+        "cotton_jersey",
+        "jersey_elastane"
+      ],
+      "title": "StretchClass",
+      "type": "string"
+    }
+  },
+  "description": "A garment as laid flat, in cm. Used for closet items and for each size of a product.",
+  "properties": {
+    "cut": {
+      "$ref": "#/$defs/Cut",
+      "default": "set_in"
+    },
+    "fit_tag": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Label"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "How the owner says it fits them. Closet references only."
+    },
+    "kind": {
+      "$ref": "#/$defs/GarmentKind"
+    },
+    "length_from_center_back": {
+      "default": false,
+      "title": "Length From Center Back",
+      "type": "boolean"
+    },
+    "measurements": {
+      "additionalProperties": {
+        "$ref": "#/$defs/MeasurementModel"
+      },
+      "propertyNames": {
+        "$ref": "#/$defs/GarmentField"
+      },
+      "title": "Measurements",
+      "type": "object"
+    },
+    "size_label": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Size Label"
+    },
+    "sleeve_from_center_back": {
+      "default": false,
+      "title": "Sleeve From Center Back",
+      "type": "boolean"
+    },
+    "stretch": {
+      "$ref": "#/$defs/StretchClass"
+    }
+  },
+  "required": [
+    "kind",
+    "stretch"
+  ],
+  "title": "GarmentModel",
+  "type": "object"
+}

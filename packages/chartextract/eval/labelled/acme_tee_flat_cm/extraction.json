@@ -1,0 +1,119 @@
+{
+  "page_title": "Heavyweight Tee",
+  "model_id": "recorded",
+  "extraction": {
+    "found": true,
+    "chart_kind": "garment",
+    "measure_basis": "flat",
+    "unit": "cm",
+    "rows": [
+      {
+        "size_label": "S",
+        "cells": [
+          {
+            "measure": "Chest (pit to pit)",
+            "value": 50,
+            "unit": null
+          },
+          {
+            "measure": "Length (HPS)",
+            "value": 70,
+            "unit": null
+          },
+          {
+            "measure": "Shoulder",
+            "value": 44,
+            "unit": null
+          },
+          {
+            "measure": "Sleeve length",
+            "value": 21,
+            "unit": null
+          }
+        ]
+      },
+      {
+        "size_label": "M",
+        "cells": [
+          {
+            "measure": "Chest (pit to pit)",
+            "value": 53,
+            "unit": null
+          },
+          {
+            "measure": "Length (HPS)",
+            "value": 72,
+            "unit": null
+          },
+          {
+            "measure": "Shoulder",
+            "value": 46,
+            "unit": null
+          },
+          {
+            "measure": "Sleeve length",
+            "value": 22,
+            "unit": null
+          }
+        ]
+      },
+      {
+        "size_label": "L",
+        "cells": [
+          {
+            "measure": "Chest (pit to pit)",
+            "value": 56,
+            "unit": null
+          },
+          {
+            "measure": "Length (HPS)",
+            "value": 74,
+            "unit": null
+          },
+          {
+            "measure": "Shoulder",
+            "value": 48,
+            "unit": null
+          },
+          {
+            "measure": "Sleeve length",
+            "value": 23,
+            "unit": null
+          }
+        ]
+      },
+      {
+        "size_label": "XL",
+        "cells": [
+          {
+            "measure": "Chest (pit to pit)",
+            "value": 59,
+            "unit": null
+          },
+          {
+            "measure": "Length (HPS)",
+            "value": 76,
+            "unit": null
+          },
+          {
+            "measure": "Shoulder",
+            "value": 50,
+            "unit": null
+          },
+          {
+            "measure": "Sleeve length",
+            "value": 24,
+            "unit": null
+          }
+        ]
+      }
+    ],
+    "fabric_composition": "100% cotton, 240 gsm jersey",
+    "knit_or_woven": "knit",
+    "cut": "set_in",
+    "length_from": "hps",
+    "sleeve_from": "shoulder_seam",
+    "notes": null,
+    "confidence": "high"
+  }
+}

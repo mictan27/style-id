@@ -1,0 +1,21 @@
+[project]
+name = "styleid-bodyfit"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+  "styleid-schema",
+  "numpy>=2.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.8,<0.14"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "styleid_bodyfit"
+
+[tool.uv.sources]
+styleid-fit = { workspace = true }
+styleid-schema = { workspace = true }
+styleid-charts = { workspace = true }
+styleid-api = { workspace = true }

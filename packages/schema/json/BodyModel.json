@@ -1,0 +1,129 @@
+{
+  "$defs": {
+    "BodyField": {
+      "description": "The nine tape-equivalent body measurements, in cm.",
+      "enum": [
+        "height",
+        "neck",
+        "shoulder",
+        "chest",
+        "waist",
+        "hip",
+        "arm_length",
+        "bicep",
+        "back_length"
+      ],
+      "title": "BodyField",
+      "type": "string"
+    },
+    "Confidence": {
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ],
+      "title": "Confidence",
+      "type": "string"
+    },
+    "LandmarksModel": {
+      "description": "Vertical positions in cm below the high point of shoulder.",
+      "properties": {
+        "hip_line_cm": {
+          "exclusiveMaximum": 150,
+          "exclusiveMinimum": 0,
+          "title": "Hip Line Cm",
+          "type": "number"
+        },
+        "waist_line_cm": {
+          "exclusiveMaximum": 150,
+          "exclusiveMinimum": 0,
+          "title": "Waist Line Cm",
+          "type": "number"
+        },
+        "wrist_cm": {
+          "exclusiveMaximum": 150,
+          "exclusiveMinimum": 0,
+          "title": "Wrist Cm",
+          "type": "number"
+        }
+      },
+      "required": [
+        "waist_line_cm",
+        "hip_line_cm",
+        "wrist_cm"
+      ],
+      "title": "LandmarksModel",
+      "type": "object"
+    },
+    "MeasurementModel": {
+      "description": "One number in cm with where it came from and how much to trust it.",
+      "properties": {
+        "confidence": {
+          "$ref": "#/$defs/Confidence",
+          "default": "medium"
+        },
+        "source": {
+          "$ref": "#/$defs/Source"
+        },
+        "value_cm": {
+          "exclusiveMaximum": 400,
+          "exclusiveMinimum": 0,
+          "title": "Value Cm",
+          "type": "number"
+        }
+      },
+      "required": [
+        "value_cm",
+        "source"
+      ],
+      "title": "MeasurementModel",
+      "type": "object"
+    },
+    "Source": {
+      "description": "Where a measurement came from. Carried on every value.",
+      "enum": [
+        "flatlay",
+        "chart",
+        "brand_ease_estimate",
+        "manual",
+        "lidar",
+        "photo",
+        "size_anchor"
+      ],
+      "title": "Source",
+      "type": "string"
+    }
+  },
+  "description": "The body record: nine tape-equivalent measurements plus optional landmarks.\n\nThe MHR mesh itself is stored as a blob and referenced by the API, not carried here.",
+  "properties": {
+    "landmarks": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/LandmarksModel"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "measurements": {
+      "additionalProperties": {
+        "$ref": "#/$defs/MeasurementModel"
+      },
+      "propertyNames": {
+        "$ref": "#/$defs/BodyField"
+      },
+      "title": "Measurements",
+      "type": "object"
+    },
+    "source": {
+      "$ref": "#/$defs/Source"
+    }
+  },
+  "required": [
+    "source"
+  ],
+  "title": "BodyModel",
+  "type": "object"
+}

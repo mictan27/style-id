@@ -1,0 +1,254 @@
+{
+  "$defs": {
+    "Basis": {
+      "enum": [
+        "reference",
+        "body"
+      ],
+      "title": "Basis",
+      "type": "string"
+    },
+    "Confidence": {
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ],
+      "title": "Confidence",
+      "type": "string"
+    },
+    "Label": {
+      "enum": [
+        "tight",
+        "fitted",
+        "regular",
+        "relaxed"
+      ],
+      "title": "Label",
+      "type": "string"
+    },
+    "PositionModel": {
+      "properties": {
+        "landmark": {
+          "title": "Landmark",
+          "type": "string"
+        },
+        "offset_cm": {
+          "title": "Offset Cm",
+          "type": "number"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "landmark",
+        "offset_cm",
+        "text"
+      ],
+      "title": "PositionModel",
+      "type": "object"
+    },
+    "SizeResultModel": {
+      "properties": {
+        "excluded_reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Excluded Reason"
+        },
+        "score": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Score"
+        },
+        "size_label": {
+          "title": "Size Label",
+          "type": "string"
+        },
+        "zones": {
+          "items": {
+            "$ref": "#/$defs/ZoneResultModel"
+          },
+          "title": "Zones",
+          "type": "array"
+        }
+      },
+      "required": [
+        "size_label",
+        "zones",
+        "score"
+      ],
+      "title": "SizeResultModel",
+      "type": "object"
+    },
+    "Zone": {
+      "description": "Fit zones reported to the user. Ease zones get a label; position zones get a position.",
+      "enum": [
+        "chest",
+        "shoulder",
+        "waist",
+        "hem",
+        "bicep",
+        "collar",
+        "length",
+        "sleeve"
+      ],
+      "title": "Zone",
+      "type": "string"
+    },
+    "ZoneResultModel": {
+      "properties": {
+        "basis": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Basis"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "confidence": {
+          "$ref": "#/$defs/Confidence"
+        },
+        "delta_vs_ref_cm": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Delta Vs Ref Cm"
+        },
+        "ease_cm": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ease Cm"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Label"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "position": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PositionModel"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "zone": {
+          "$ref": "#/$defs/Zone"
+        }
+      },
+      "required": [
+        "zone",
+        "label",
+        "basis",
+        "confidence"
+      ],
+      "title": "ZoneResultModel",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "diffs_cm": {
+      "additionalProperties": {
+        "type": "number"
+      },
+      "propertyNames": {
+        "$ref": "#/$defs/Zone"
+      },
+      "title": "Diffs Cm",
+      "type": "object"
+    },
+    "engine_version": {
+      "title": "Engine Version",
+      "type": "string"
+    },
+    "overall_confidence": {
+      "$ref": "#/$defs/Confidence"
+    },
+    "pick": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/SizeResultModel"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "reference_size_label": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Reference Size Label"
+    },
+    "runner_up": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/SizeResultModel"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "sizes": {
+      "items": {
+        "$ref": "#/$defs/SizeResultModel"
+      },
+      "title": "Sizes",
+      "type": "array"
+    }
+  },
+  "required": [
+    "engine_version",
+    "pick",
+    "runner_up",
+    "sizes",
+    "overall_confidence"
+  ],
+  "title": "FitReportModel",
+  "type": "object"
+}

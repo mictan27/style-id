@@ -1,0 +1,18 @@
+{
+  "page_title": "Linen Shirt",
+  "model_id": "recorded",
+  "extraction": {
+    "found": false,
+    "chart_kind": "unknown",
+    "measure_basis": "unknown",
+    "unit": "unknown",
+    "rows": [],
+    "fabric_composition": "100% linen",
+    "knit_or_woven": "woven",
+    "cut": null,
+    "length_from": "unknown",
+    "sleeve_from": "unknown",
+    "notes": "No size chart on the page.",
+    "confidence": "high"
+  }
+}

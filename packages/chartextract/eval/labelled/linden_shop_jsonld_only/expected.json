@@ -1,0 +1,13 @@
+{
+  "title": "Linen Shirt",
+  "url": "https://shop.linden.example/item/9981-linen-shirt?gclid=abc",
+  "garment_kind": "shirt",
+  "status": "not_found",
+  "stretch": "rigid_woven",
+  "classification": {
+    "chart_kind": "unknown",
+    "measure_basis": "unknown",
+    "unit": "unknown"
+  },
+  "sizes": []
+}

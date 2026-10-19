@@ -1,0 +1,37 @@
+# python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+dist/
+*.egg-info/
+.coverage
+htmlcov/
+
+# node / expo
+node_modules/
+.expo/
+.expo-shared/
+apps/mobile/ios/
+apps/mobile/android/
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# secrets and local state
+.env
+.env.*
+!.env.example
+*.sqlite
+*.db
+packages/chartextract/eval/labelled/**/shots/*.png
+
+# os / editors
+.DS_Store
+.idea/
+.vscode/

@@ -1,0 +1,23 @@
+{
+  "description": "Raglan sweater measured from centre back: the shoulder rule is off, sleeve from CB is normalised. Body and a regular hoodie reference of the same stretch class.",
+  "body": {"source": "lidar", "measurements": {"height": 182, "neck": 40, "shoulder": 46, "chest": 102, "waist": 90, "hip": 102, "arm_length": 64, "bicep": 33, "back_length": 48}},
+  "references": [
+    {"kind": "hoodie", "stretch": "cotton_jersey", "size_label": "L", "fit_tag": "regular", "cut": "drop_shoulder",
+     "measurements": {"chest_width": 58, "hem_width": 54, "length": 72, "bicep_width": 23}}
+  ],
+  "candidates": [
+    {"size_label": "M", "kind": "sweater", "cut": "raglan", "stretch": "cotton_jersey", "source": "chart", "measurements": {"chest_width": 54, "hem_width": 50, "length": 70, "bicep_width": 21}},
+    {"size_label": "L", "kind": "sweater", "cut": "raglan", "stretch": "cotton_jersey", "source": "chart", "measurements": {"chest_width": 58, "hem_width": 54, "length": 72, "bicep_width": 23}},
+    {"size_label": "XL", "kind": "sweater", "cut": "raglan", "stretch": "cotton_jersey", "source": "chart", "measurements": {"chest_width": 62, "hem_width": 58, "length": 74, "bicep_width": 25}}
+  ],
+  "expected": {
+    "pick": "L",
+    "runner_up": "M",
+    "labels": {
+      "M": {"chest": "fitted", "bicep": "fitted"},
+      "L": {"chest": "regular", "bicep": "regular"},
+      "XL": {"chest": "relaxed", "bicep": "relaxed"}
+    },
+    "excluded": []
+  }
+}

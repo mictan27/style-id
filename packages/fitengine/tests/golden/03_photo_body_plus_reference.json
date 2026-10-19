@@ -1,0 +1,24 @@
+{
+  "description": "Photo-path body (medium confidence) and a reference tee tagged 'fitted'. The reference anchors labels: the S matches it and reads fitted, one size down is tight, one up is regular. Length positions still come from the body (hip line at 41 + 18 = 59).",
+  "body": {"source": "photo", "confidence": "medium", "measurements": {"height": 165, "neck": 35, "shoulder": 39, "chest": 88, "waist": 72, "hip": 94, "arm_length": 56, "bicep": 27, "back_length": 41}},
+  "references": [
+    {"kind": "tee", "stretch": "cotton_jersey", "size_label": "S", "fit_tag": "fitted",
+     "measurements": {"chest_width": 46, "shoulder_width": 38.5, "length": 61}}
+  ],
+  "candidates": [
+    {"size_label": "XS", "stretch": "cotton_jersey", "source": "chart", "measurements": {"chest_width": 44, "shoulder_width": 37, "length": 60}},
+    {"size_label": "S", "stretch": "cotton_jersey", "source": "chart", "measurements": {"chest_width": 46, "shoulder_width": 38.5, "length": 62}},
+    {"size_label": "M", "stretch": "cotton_jersey", "source": "chart", "measurements": {"chest_width": 48, "shoulder_width": 40, "length": 64}}
+  ],
+  "expected": {
+    "pick": "S",
+    "runner_up": "XS",
+    "labels": {
+      "XS": {"chest": "tight"},
+      "S": {"chest": "fitted"},
+      "M": {"chest": "regular"}
+    },
+    "positions": {"S": "hem lands 3 cm below your hip line"},
+    "excluded": []
+  }
+}

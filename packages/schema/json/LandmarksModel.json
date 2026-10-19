@@ -1,0 +1,30 @@
+{
+  "description": "Vertical positions in cm below the high point of shoulder.",
+  "properties": {
+    "hip_line_cm": {
+      "exclusiveMaximum": 150,
+      "exclusiveMinimum": 0,
+      "title": "Hip Line Cm",
+      "type": "number"
+    },
+    "waist_line_cm": {
+      "exclusiveMaximum": 150,
+      "exclusiveMinimum": 0,
+      "title": "Waist Line Cm",
+      "type": "number"
+    },
+    "wrist_cm": {
+      "exclusiveMaximum": 150,
+      "exclusiveMinimum": 0,
+      "title": "Wrist Cm",
+      "type": "number"
+    }
+  },
+  "required": [
+    "waist_line_cm",
+    "hip_line_cm",
+    "wrist_cm"
+  ],
+  "title": "LandmarksModel",
+  "type": "object"
+}

@@ -1,0 +1,210 @@
+{
+  "$defs": {
+    "ChartCell": {
+      "properties": {
+        "measure": {
+          "description": "Measurement name exactly as the page labels it",
+          "title": "Measure",
+          "type": "string"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "enum": [
+                "cm",
+                "in"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Unit for this cell if the page states one; else null",
+          "title": "Unit"
+        },
+        "value": {
+          "title": "Value",
+          "type": "number"
+        }
+      },
+      "required": [
+        "measure",
+        "value"
+      ],
+      "title": "ChartCell",
+      "type": "object"
+    },
+    "ChartRow": {
+      "properties": {
+        "cells": {
+          "items": {
+            "$ref": "#/$defs/ChartCell"
+          },
+          "title": "Cells",
+          "type": "array"
+        },
+        "size_label": {
+          "description": "Size exactly as labelled, e.g. 'M', '40', 'L/XL'",
+          "title": "Size Label",
+          "type": "string"
+        }
+      },
+      "required": [
+        "size_label",
+        "cells"
+      ],
+      "title": "ChartRow",
+      "type": "object"
+    },
+    "Confidence": {
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ],
+      "title": "Confidence",
+      "type": "string"
+    },
+    "Cut": {
+      "enum": [
+        "set_in",
+        "raglan",
+        "drop_shoulder"
+      ],
+      "title": "Cut",
+      "type": "string"
+    }
+  },
+  "description": "Structured output requested from the model. Keep field descriptions precise: they are\nthe prompt.",
+  "properties": {
+    "chart_kind": {
+      "description": "'garment' when the numbers are of the garment itself (laid flat or around); 'body' when they describe the wearer's body (e.g. 'fits chest 96-100')",
+      "enum": [
+        "body",
+        "garment",
+        "unknown"
+      ],
+      "title": "Chart Kind",
+      "type": "string"
+    },
+    "confidence": {
+      "$ref": "#/$defs/Confidence",
+      "description": "How sure you are the extraction is correct"
+    },
+    "cut": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Cut"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "set_in, raglan or drop_shoulder if stated"
+    },
+    "fabric_composition": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "e.g. '100% cotton', '95% cotton 5% elastane'",
+      "title": "Fabric Composition"
+    },
+    "found": {
+      "description": "False when the page has no size chart at all",
+      "title": "Found",
+      "type": "boolean"
+    },
+    "knit_or_woven": {
+      "default": "unknown",
+      "enum": [
+        "knit",
+        "woven",
+        "unknown"
+      ],
+      "title": "Knit Or Woven",
+      "type": "string"
+    },
+    "length_from": {
+      "default": "unknown",
+      "description": "Where the body length is measured from: high point of shoulder or centre back",
+      "enum": [
+        "hps",
+        "center_back",
+        "unknown"
+      ],
+      "title": "Length From",
+      "type": "string"
+    },
+    "measure_basis": {
+      "description": "For garment charts: 'flat' when widths are measured across the garment lying flat (pit to pit), 'circumference' when they are all the way around",
+      "enum": [
+        "flat",
+        "circumference",
+        "mixed",
+        "unknown"
+      ],
+      "title": "Measure Basis",
+      "type": "string"
+    },
+    "notes": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Anything ambiguous, one sentence",
+      "title": "Notes"
+    },
+    "rows": {
+      "items": {
+        "$ref": "#/$defs/ChartRow"
+      },
+      "title": "Rows",
+      "type": "array"
+    },
+    "sleeve_from": {
+      "default": "unknown",
+      "description": "Where sleeve length is measured from",
+      "enum": [
+        "shoulder_seam",
+        "center_back",
+        "unknown"
+      ],
+      "title": "Sleeve From",
+      "type": "string"
+    },
+    "unit": {
+      "description": "Unit of the chart overall",
+      "enum": [
+        "cm",
+        "in",
+        "mixed",
+        "unknown"
+      ],
+      "title": "Unit",
+      "type": "string"
+    }
+  },
+  "required": [
+    "found",
+    "chart_kind",
+    "measure_basis",
+    "unit",
+    "confidence"
+  ],
+  "title": "ChartExtraction",
+  "type": "object"
+}

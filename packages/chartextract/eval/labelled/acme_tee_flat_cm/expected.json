@@ -1,0 +1,58 @@
+{
+  "title": "Heavyweight Tee",
+  "url": "https://www.acme-apparel.example/products/heavyweight-tee?variant=123&utm_source=ig",
+  "garment_kind": "tee",
+  "status": "ok",
+  "stretch": "cotton_jersey",
+  "classification": {
+    "chart_kind": "garment",
+    "measure_basis": "flat",
+    "unit": "cm"
+  },
+  "sizes": [
+    {
+      "size_label": "S",
+      "length_from_center_back": false,
+      "sleeve_from_center_back": false,
+      "measurements": {
+        "chest_width": 50,
+        "length": 70,
+        "shoulder_width": 44,
+        "sleeve_length": 21
+      }
+    },
+    {
+      "size_label": "M",
+      "length_from_center_back": false,
+      "sleeve_from_center_back": false,
+      "measurements": {
+        "chest_width": 53,
+        "length": 72,
+        "shoulder_width": 46,
+        "sleeve_length": 22
+      }
+    },
+    {
+      "size_label": "L",
+      "length_from_center_back": false,
+      "sleeve_from_center_back": false,
+      "measurements": {
+        "chest_width": 56,
+        "length": 74,
+        "shoulder_width": 48,
+        "sleeve_length": 23
+      }
+    },
+    {
+      "size_label": "XL",
+      "length_from_center_back": false,
+      "sleeve_from_center_back": false,
+      "measurements": {
+        "chest_width": 59,
+        "length": 76,
+        "shoulder_width": 50,
+        "sleeve_length": 24
+      }
+    }
+  ]
+}

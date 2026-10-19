@@ -1,0 +1,20 @@
+{
+  "description": "LiDAR body, no references, rigid woven shirt. Chest 96: S has 0 ease and is excluded; M at 8 cm is fitted; L at 12 cm is regular and matches the population default best.",
+  "body": {"source": "lidar", "measurements": {"height": 178, "neck": 39, "shoulder": 44, "chest": 96, "waist": 84, "hip": 98, "arm_length": 62, "bicep": 31, "back_length": 46}},
+  "references": [],
+  "candidates": [
+    {"size_label": "S", "kind": "shirt", "stretch": "rigid_woven", "source": "chart", "measurements": {"chest_width": 48, "shoulder_width": 43, "collar": 38, "length": 72, "sleeve_length": 61}},
+    {"size_label": "M", "kind": "shirt", "stretch": "rigid_woven", "source": "chart", "measurements": {"chest_width": 52, "shoulder_width": 45, "collar": 40, "length": 74, "sleeve_length": 63}},
+    {"size_label": "L", "kind": "shirt", "stretch": "rigid_woven", "source": "chart", "measurements": {"chest_width": 54, "shoulder_width": 46, "collar": 42, "length": 76, "sleeve_length": 65}}
+  ],
+  "expected": {
+    "pick": "L",
+    "runner_up": "M",
+    "labels": {
+      "M": {"chest": "fitted", "collar": "fitted"},
+      "L": {"chest": "regular", "collar": "regular"}
+    },
+    "positions": {"L": "hem lands 12 cm below your hip line", "M": "hem lands 10 cm below your hip line"},
+    "excluded": ["S"]
+  }
+}

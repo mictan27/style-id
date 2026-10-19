@@ -1,0 +1,21 @@
+[project]
+name = "styleid-schema"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+  "styleid-fit",
+  "pydantic>=2.9",
+]
+
+[build-system]
+requires = ["uv_build>=0.8,<0.14"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "styleid_schema"
+
+[tool.uv.sources]
+styleid-fit = { workspace = true }
+styleid-schema = { workspace = true }
+styleid-charts = { workspace = true }
+styleid-api = { workspace = true }

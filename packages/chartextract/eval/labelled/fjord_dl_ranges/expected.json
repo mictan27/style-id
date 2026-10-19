@@ -1,0 +1,54 @@
+{
+  "title": "Linen Camp Shirt",
+  "url": "https://fjordwear.example/products/linen-camp-shirt",
+  "garment_kind": "shirt",
+  "status": "ok",
+  "stretch": "rigid_woven",
+  "classification": {
+    "chart_kind": "body",
+    "measure_basis": "circumference",
+    "unit": "cm"
+  },
+  "sizes": [
+    {
+      "size_label": "S",
+      "length_from_center_back": false,
+      "sleeve_from_center_back": false,
+      "measurements": {
+        "chest_width": 52.0,
+        "waist_width": 46.0,
+        "collar": 40.5
+      }
+    },
+    {
+      "size_label": "M",
+      "length_from_center_back": false,
+      "sleeve_from_center_back": false,
+      "measurements": {
+        "chest_width": 56.0,
+        "waist_width": 50.0,
+        "collar": 42.5
+      }
+    },
+    {
+      "size_label": "L",
+      "length_from_center_back": false,
+      "sleeve_from_center_back": false,
+      "measurements": {
+        "chest_width": 60.0,
+        "waist_width": 54.0,
+        "collar": 44.5
+      }
+    },
+    {
+      "size_label": "XL",
+      "length_from_center_back": false,
+      "sleeve_from_center_back": false,
+      "measurements": {
+        "chest_width": 64.0,
+        "waist_width": 58.0,
+        "collar": 46.5
+      }
+    }
+  ]
+}

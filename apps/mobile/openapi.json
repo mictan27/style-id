@@ -1,0 +1,3352 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "style.id API",
+    "description": "Measurement-based fit for tops: closet, body, products, fit reports.",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/v1/health": {
+      "get": {
+        "tags": [
+          "health"
+        ],
+        "summary": "Get Health",
+        "operationId": "getHealth",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthOut"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/auth/apple": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Sign In With Apple",
+        "operationId": "signInWithApple",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppleSignInRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/me": {
+      "get": {
+        "tags": [
+          "me"
+        ],
+        "summary": "Get Me",
+        "operationId": "getMe",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          },
+          {
+            "name": "X-Dev-User",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-User"
+            }
+          },
+          {
+            "name": "X-Dev-Secret",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-Secret"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MeOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "me"
+        ],
+        "summary": "Update Me",
+        "operationId": "updateMe",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          },
+          {
+            "name": "X-Dev-User",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-User"
+            }
+          },
+          {
+            "name": "X-Dev-Secret",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-Secret"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MePatch"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MeOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/me/preferences": {
+      "patch": {
+        "tags": [
+          "me"
+        ],
+        "summary": "Update Preferences",
+        "description": "Merge the given per-zone shifts into the stored preferences. Send ``0`` to reset a\nzone. The engine nudges these automatically from purchase outcomes.",
+        "operationId": "updatePreferences",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          },
+          {
+            "name": "X-Dev-User",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-User"
+            }
+          },
+          {
+            "name": "X-Dev-Secret",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-Secret"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreferencesModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PreferencesModel"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/closet/garments": {
+      "get": {
+        "tags": [
+          "closet"
+        ],
+        "summary": "List Closet Garments",
+        "operationId": "listClosetGarments",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          },
+          {
+            "name": "X-Dev-User",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-User"
+            }
+          },
+          {
+            "name": "X-Dev-Secret",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-Secret"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ClosetGarmentOut"
+                  },
+                  "title": "Response Listclosetgarments"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "closet"
+        ],
+        "summary": "Create Closet Garment",
+        "operationId": "createClosetGarment",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          },
+          {
+            "name": "X-Dev-User",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-User"
+            }
+          },
+          {
+            "name": "X-Dev-Secret",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-Secret"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClosetGarmentIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClosetGarmentOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/closet/garments/{garment_id}": {
+      "get": {
+        "tags": [
+          "closet"
+        ],
+        "summary": "Get Closet Garment",
+        "operationId": "getClosetGarment",
+        "parameters": [
+          {
+            "name": "garment_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Garment Id"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          },
+          {
+            "name": "X-Dev-User",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-User"
+            }
+          },
+          {
+            "name": "X-Dev-Secret",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-Secret"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClosetGarmentOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "closet"
+        ],
+        "summary": "Update Closet Garment",
+        "operationId": "updateClosetGarment",
+        "parameters": [
+          {
+            "name": "garment_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Garment Id"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          },
+          {
+            "name": "X-Dev-User",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-User"
+            }
+          },
+          {
+            "name": "X-Dev-Secret",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-Secret"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClosetGarmentIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClosetGarmentOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "closet"
+        ],
+        "summary": "Delete Closet Garment",
+        "operationId": "deleteClosetGarment",
+        "parameters": [
+          {
+            "name": "garment_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Garment Id"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          },
+          {
+            "name": "X-Dev-User",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-User"
+            }
+          },
+          {
+            "name": "X-Dev-Secret",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-Secret"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/closet/garments/{garment_id}/landmark-corrections": {
+      "post": {
+        "tags": [
+          "closet"
+        ],
+        "summary": "Create Landmark Correction",
+        "description": "Record how the user moved the proposed flat-lay landmarks; training data for the\nlandmark model.",
+        "operationId": "createLandmarkCorrection",
+        "parameters": [
+          {
+            "name": "garment_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Garment Id"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          },
+          {
+            "name": "X-Dev-User",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-User"
+            }
+          },
+          {
+            "name": "X-Dev-Secret",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-Secret"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LandmarkCorrectionIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LandmarkCorrectionOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "closet"
+        ],
+        "summary": "List Landmark Corrections",
+        "operationId": "listLandmarkCorrections",
+        "parameters": [
+          {
+            "name": "garment_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Garment Id"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          },
+          {
+            "name": "X-Dev-User",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-User"
+            }
+          },
+          {
+            "name": "X-Dev-Secret",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-Secret"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LandmarkCorrectionOut"
+                  },
+                  "title": "Response Listlandmarkcorrections"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/body/records": {
+      "post": {
+        "tags": [
+          "body"
+        ],
+        "summary": "Create Body Record",
+        "description": "Store a new body record and make it the current one.",
+        "operationId": "createBodyRecord",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          },
+          {
+            "name": "X-Dev-User",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-User"
+            }
+          },
+          {
+            "name": "X-Dev-Secret",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-Secret"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BodyRecordIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BodyRecordOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/body/records/current": {
+      "get": {
+        "tags": [
+          "body"
+        ],
+        "summary": "Get Current Body Record",
+        "operationId": "getCurrentBodyRecord",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          },
+          {
+            "name": "X-Dev-User",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-User"
+            }
+          },
+          {
+            "name": "X-Dev-Secret",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-Secret"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BodyRecordOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/body/records/{record_id}": {
+      "get": {
+        "tags": [
+          "body"
+        ],
+        "summary": "Get Body Record",
+        "operationId": "getBodyRecord",
+        "parameters": [
+          {
+            "name": "record_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Record Id"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          },
+          {
+            "name": "X-Dev-User",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-User"
+            }
+          },
+          {
+            "name": "X-Dev-Secret",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-Secret"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BodyRecordOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/body/records/{record_id}/confirm": {
+      "post": {
+        "tags": [
+          "body"
+        ],
+        "summary": "Confirm Body Record",
+        "description": "The user looked at the numbers and accepted them, overriding any they corrected.",
+        "operationId": "confirmBodyRecord",
+        "parameters": [
+          {
+            "name": "record_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Record Id"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          },
+          {
+            "name": "X-Dev-User",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-User"
+            }
+          },
+          {
+            "name": "X-Dev-Secret",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-Secret"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BodyConfirmIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BodyRecordOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/products/check": {
+      "post": {
+        "tags": [
+          "products"
+        ],
+        "summary": "Check Product",
+        "description": "Canonicalise the URL, find or create the product, and make sure a size chart has\nbeen extracted (or is being extracted). Idempotent for the same product.",
+        "operationId": "checkProduct",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          },
+          {
+            "name": "X-Dev-User",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-User"
+            }
+          },
+          {
+            "name": "X-Dev-Secret",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-Secret"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductCheckIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/products/{product_id}": {
+      "get": {
+        "tags": [
+          "products"
+        ],
+        "summary": "Get Product",
+        "operationId": "getProduct",
+        "parameters": [
+          {
+            "name": "product_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Product Id"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          },
+          {
+            "name": "X-Dev-User",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-User"
+            }
+          },
+          {
+            "name": "X-Dev-Secret",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-Secret"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/fit/reports": {
+      "post": {
+        "tags": [
+          "fit"
+        ],
+        "summary": "Create Fit Report",
+        "operationId": "createFitReport",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          },
+          {
+            "name": "X-Dev-User",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-User"
+            }
+          },
+          {
+            "name": "X-Dev-Secret",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-Secret"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FitReportIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FitReportOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "fit"
+        ],
+        "summary": "List Fit Reports",
+        "operationId": "listFitReports",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 200,
+              "minimum": 1,
+              "default": 50,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          },
+          {
+            "name": "X-Dev-User",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-User"
+            }
+          },
+          {
+            "name": "X-Dev-Secret",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-Secret"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FitReportOut"
+                  },
+                  "title": "Response Listfitreports"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/fit/reports/{report_id}": {
+      "get": {
+        "tags": [
+          "fit"
+        ],
+        "summary": "Get Fit Report",
+        "operationId": "getFitReport",
+        "parameters": [
+          {
+            "name": "report_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Report Id"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          },
+          {
+            "name": "X-Dev-User",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-User"
+            }
+          },
+          {
+            "name": "X-Dev-Secret",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-Secret"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FitReportOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/outcomes": {
+      "post": {
+        "tags": [
+          "outcomes"
+        ],
+        "summary": "Create Outcome",
+        "operationId": "createOutcome",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          },
+          {
+            "name": "X-Dev-User",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-User"
+            }
+          },
+          {
+            "name": "X-Dev-Secret",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Dev-Secret"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OutcomeIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OutcomeOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AppleSignInRequest": {
+        "properties": {
+          "identity_token": {
+            "type": "string",
+            "title": "Identity Token",
+            "description": "The JWT from ASAuthorizationAppleIDCredential"
+          },
+          "dob_verified_18": {
+            "type": "boolean",
+            "title": "Dob Verified 18",
+            "description": "The user confirmed in-app that they are 18 or older (needed for body data)"
+          }
+        },
+        "type": "object",
+        "required": [
+          "identity_token",
+          "dob_verified_18"
+        ],
+        "title": "AppleSignInRequest"
+      },
+      "Basis": {
+        "type": "string",
+        "enum": [
+          "reference",
+          "body"
+        ],
+        "title": "Basis"
+      },
+      "BodyConfirmIn": {
+        "properties": {
+          "overrides": {
+            "additionalProperties": {
+              "type": "number",
+              "exclusiveMaximum": 400.0,
+              "exclusiveMinimum": 0.0
+            },
+            "propertyNames": {
+              "$ref": "#/components/schemas/BodyField"
+            },
+            "type": "object",
+            "title": "Overrides"
+          }
+        },
+        "type": "object",
+        "title": "BodyConfirmIn",
+        "description": "Per-field overrides from the confirm screen. Every value given replaces the measured\none and is stored as ``source=manual, confidence=high``."
+      },
+      "BodyField": {
+        "type": "string",
+        "enum": [
+          "height",
+          "neck",
+          "shoulder",
+          "chest",
+          "waist",
+          "hip",
+          "arm_length",
+          "bicep",
+          "back_length"
+        ],
+        "title": "BodyField",
+        "description": "The nine tape-equivalent body measurements, in cm."
+      },
+      "BodyRecordIn": {
+        "properties": {
+          "source": {
+            "$ref": "#/components/schemas/Source"
+          },
+          "measurements": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/MeasurementModel"
+            },
+            "propertyNames": {
+              "$ref": "#/components/schemas/BodyField"
+            },
+            "type": "object",
+            "title": "Measurements"
+          },
+          "landmarks": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/LandmarksModel"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "mesh_blob_key": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 512
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mesh Blob Key"
+          }
+        },
+        "type": "object",
+        "required": [
+          "source"
+        ],
+        "title": "BodyRecordIn",
+        "description": "A ``BodyModel`` plus the blob key of the fitted mesh, if any."
+      },
+      "BodyRecordOut": {
+        "properties": {
+          "source": {
+            "$ref": "#/components/schemas/Source"
+          },
+          "measurements": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/MeasurementModel"
+            },
+            "propertyNames": {
+              "$ref": "#/components/schemas/BodyField"
+            },
+            "type": "object",
+            "title": "Measurements"
+          },
+          "landmarks": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/LandmarksModel"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "mesh_blob_key": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mesh Blob Key"
+          },
+          "confirmed_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Confirmed At"
+          },
+          "is_current": {
+            "type": "boolean",
+            "title": "Is Current"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "source",
+          "id",
+          "mesh_blob_key",
+          "confirmed_at",
+          "is_current",
+          "created_at"
+        ],
+        "title": "BodyRecordOut"
+      },
+      "BrandOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "domain": {
+            "type": "string",
+            "title": "Domain"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "domain"
+        ],
+        "title": "BrandOut"
+      },
+      "ClosetGarmentIn": {
+        "properties": {
+          "kind": {
+            "$ref": "#/components/schemas/GarmentKind"
+          },
+          "cut": {
+            "$ref": "#/components/schemas/Cut",
+            "default": "set_in"
+          },
+          "stretch": {
+            "$ref": "#/components/schemas/StretchClass"
+          },
+          "size_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Size Label"
+          },
+          "fit_tag": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Label"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "How the owner says it fits them. Closet references only."
+          },
+          "length_from_center_back": {
+            "type": "boolean",
+            "title": "Length From Center Back",
+            "default": false
+          },
+          "sleeve_from_center_back": {
+            "type": "boolean",
+            "title": "Sleeve From Center Back",
+            "default": false
+          },
+          "measurements": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/MeasurementModel"
+            },
+            "propertyNames": {
+              "$ref": "#/components/schemas/GarmentField"
+            },
+            "type": "object",
+            "title": "Measurements"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 120
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name",
+            "description": "e.g. \"grey tee\""
+          },
+          "is_reference": {
+            "type": "boolean",
+            "title": "Is Reference",
+            "description": "Use this garment as a fit reference in reports",
+            "default": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "kind",
+          "stretch"
+        ],
+        "title": "ClosetGarmentIn",
+        "description": "A ``GarmentModel`` plus closet bookkeeping."
+      },
+      "ClosetGarmentOut": {
+        "properties": {
+          "kind": {
+            "$ref": "#/components/schemas/GarmentKind"
+          },
+          "cut": {
+            "$ref": "#/components/schemas/Cut",
+            "default": "set_in"
+          },
+          "stretch": {
+            "$ref": "#/components/schemas/StretchClass"
+          },
+          "size_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Size Label"
+          },
+          "fit_tag": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Label"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "How the owner says it fits them. Closet references only."
+          },
+          "length_from_center_back": {
+            "type": "boolean",
+            "title": "Length From Center Back",
+            "default": false
+          },
+          "sleeve_from_center_back": {
+            "type": "boolean",
+            "title": "Sleeve From Center Back",
+            "default": false
+          },
+          "measurements": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/MeasurementModel"
+            },
+            "propertyNames": {
+              "$ref": "#/components/schemas/GarmentField"
+            },
+            "type": "object",
+            "title": "Measurements"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 120
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name",
+            "description": "e.g. \"grey tee\""
+          },
+          "is_reference": {
+            "type": "boolean",
+            "title": "Is Reference",
+            "description": "Use this garment as a fit reference in reports",
+            "default": true
+          },
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Updated At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "kind",
+          "stretch",
+          "id",
+          "created_at",
+          "updated_at"
+        ],
+        "title": "ClosetGarmentOut"
+      },
+      "Confidence": {
+        "type": "string",
+        "enum": [
+          "high",
+          "medium",
+          "low"
+        ],
+        "title": "Confidence"
+      },
+      "Cut": {
+        "type": "string",
+        "enum": [
+          "set_in",
+          "raglan",
+          "drop_shoulder"
+        ],
+        "title": "Cut"
+      },
+      "Direction": {
+        "type": "string",
+        "enum": [
+          "tight",
+          "loose"
+        ],
+        "title": "Direction"
+      },
+      "FitReportIn": {
+        "properties": {
+          "product_id": {
+            "type": "string",
+            "title": "Product Id"
+          },
+          "reference_garment_ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reference Garment Ids",
+            "description": "Closet garments to compare against; default: every garment marked as a reference"
+          }
+        },
+        "type": "object",
+        "required": [
+          "product_id"
+        ],
+        "title": "FitReportIn"
+      },
+      "FitReportModel": {
+        "properties": {
+          "engine_version": {
+            "type": "string",
+            "title": "Engine Version"
+          },
+          "pick": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SizeResultModel"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "runner_up": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SizeResultModel"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "sizes": {
+            "items": {
+              "$ref": "#/components/schemas/SizeResultModel"
+            },
+            "type": "array",
+            "title": "Sizes"
+          },
+          "diffs_cm": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "propertyNames": {
+              "$ref": "#/components/schemas/Zone"
+            },
+            "type": "object",
+            "title": "Diffs Cm"
+          },
+          "reference_size_label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reference Size Label"
+          },
+          "overall_confidence": {
+            "$ref": "#/components/schemas/Confidence"
+          }
+        },
+        "type": "object",
+        "required": [
+          "engine_version",
+          "pick",
+          "runner_up",
+          "sizes",
+          "overall_confidence"
+        ],
+        "title": "FitReportModel"
+      },
+      "FitReportOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "report": {
+            "$ref": "#/components/schemas/FitReportModel"
+          },
+          "product": {
+            "$ref": "#/components/schemas/ProductOut"
+          },
+          "body_record_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Body Record Id"
+          },
+          "reference_garment_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reference Garment Id",
+            "description": "The closet garment the per-zone deltas are relative to"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "report",
+          "product",
+          "body_record_id",
+          "reference_garment_id",
+          "created_at"
+        ],
+        "title": "FitReportOut"
+      },
+      "GarmentField": {
+        "type": "string",
+        "enum": [
+          "chest_width",
+          "waist_width",
+          "hem_width",
+          "bicep_width",
+          "shoulder_width",
+          "sleeve_length",
+          "length",
+          "collar"
+        ],
+        "title": "GarmentField",
+        "description": "Garment measurements as laid flat, in cm, following the proposal's schema."
+      },
+      "GarmentKind": {
+        "type": "string",
+        "enum": [
+          "tee",
+          "shirt",
+          "sweater",
+          "hoodie"
+        ],
+        "title": "GarmentKind"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "HealthOut": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "version": {
+            "type": "string",
+            "title": "Version"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "version"
+        ],
+        "title": "HealthOut"
+      },
+      "Label": {
+        "type": "string",
+        "enum": [
+          "tight",
+          "fitted",
+          "regular",
+          "relaxed"
+        ],
+        "title": "Label"
+      },
+      "LandmarkCorrectionIn": {
+        "properties": {
+          "image_blob_key": {
+            "type": "string",
+            "maxLength": 512,
+            "title": "Image Blob Key"
+          },
+          "proposed": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/LandmarkPoint"
+            },
+            "type": "object",
+            "title": "Proposed",
+            "description": "Landmarks the app proposed, in px"
+          },
+          "corrected": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/LandmarkPoint"
+            },
+            "type": "object",
+            "title": "Corrected",
+            "description": "Landmarks after the user moved them"
+          },
+          "scale_cm_per_px": {
+            "type": "number",
+            "exclusiveMinimum": 0.0,
+            "title": "Scale Cm Per Px"
+          }
+        },
+        "type": "object",
+        "required": [
+          "image_blob_key",
+          "proposed",
+          "corrected",
+          "scale_cm_per_px"
+        ],
+        "title": "LandmarkCorrectionIn"
+      },
+      "LandmarkCorrectionOut": {
+        "properties": {
+          "image_blob_key": {
+            "type": "string",
+            "maxLength": 512,
+            "title": "Image Blob Key"
+          },
+          "proposed": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/LandmarkPoint"
+            },
+            "type": "object",
+            "title": "Proposed",
+            "description": "Landmarks the app proposed, in px"
+          },
+          "corrected": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/LandmarkPoint"
+            },
+            "type": "object",
+            "title": "Corrected",
+            "description": "Landmarks after the user moved them"
+          },
+          "scale_cm_per_px": {
+            "type": "number",
+            "exclusiveMinimum": 0.0,
+            "title": "Scale Cm Per Px"
+          },
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "garment_id": {
+            "type": "string",
+            "title": "Garment Id"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "image_blob_key",
+          "proposed",
+          "corrected",
+          "scale_cm_per_px",
+          "id",
+          "garment_id",
+          "created_at"
+        ],
+        "title": "LandmarkCorrectionOut"
+      },
+      "LandmarkPoint": {
+        "properties": {
+          "x": {
+            "type": "number",
+            "title": "X"
+          },
+          "y": {
+            "type": "number",
+            "title": "Y"
+          }
+        },
+        "type": "object",
+        "required": [
+          "x",
+          "y"
+        ],
+        "title": "LandmarkPoint"
+      },
+      "LandmarksModel": {
+        "properties": {
+          "waist_line_cm": {
+            "type": "number",
+            "exclusiveMaximum": 150.0,
+            "exclusiveMinimum": 0.0,
+            "title": "Waist Line Cm"
+          },
+          "hip_line_cm": {
+            "type": "number",
+            "exclusiveMaximum": 150.0,
+            "exclusiveMinimum": 0.0,
+            "title": "Hip Line Cm"
+          },
+          "wrist_cm": {
+            "type": "number",
+            "exclusiveMaximum": 150.0,
+            "exclusiveMinimum": 0.0,
+            "title": "Wrist Cm"
+          }
+        },
+        "type": "object",
+        "required": [
+          "waist_line_cm",
+          "hip_line_cm",
+          "wrist_cm"
+        ],
+        "title": "LandmarksModel",
+        "description": "Vertical positions in cm below the high point of shoulder."
+      },
+      "MeOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "email": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Email"
+          },
+          "dob_verified_18": {
+            "type": "boolean",
+            "title": "Dob Verified 18"
+          },
+          "preferences": {
+            "$ref": "#/components/schemas/PreferencesModel"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "email",
+          "dob_verified_18",
+          "preferences",
+          "created_at"
+        ],
+        "title": "MeOut"
+      },
+      "MePatch": {
+        "properties": {
+          "email": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Email"
+          },
+          "dob_verified_18": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Dob Verified 18"
+          }
+        },
+        "type": "object",
+        "title": "MePatch"
+      },
+      "MeasurementModel": {
+        "properties": {
+          "value_cm": {
+            "type": "number",
+            "exclusiveMaximum": 400.0,
+            "exclusiveMinimum": 0.0,
+            "title": "Value Cm"
+          },
+          "source": {
+            "$ref": "#/components/schemas/Source"
+          },
+          "confidence": {
+            "$ref": "#/components/schemas/Confidence",
+            "default": "medium"
+          }
+        },
+        "type": "object",
+        "required": [
+          "value_cm",
+          "source"
+        ],
+        "title": "MeasurementModel",
+        "description": "One number in cm with where it came from and how much to trust it."
+      },
+      "OutcomeIn": {
+        "properties": {
+          "fit_report_id": {
+            "type": "string",
+            "title": "Fit Report Id"
+          },
+          "size_bought": {
+            "type": "string",
+            "maxLength": 32,
+            "minLength": 1,
+            "title": "Size Bought"
+          },
+          "kept": {
+            "type": "boolean",
+            "title": "Kept"
+          },
+          "zone": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Zone"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The zone that caused a return"
+          },
+          "direction": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Direction"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "tight or loose there"
+          }
+        },
+        "type": "object",
+        "required": [
+          "fit_report_id",
+          "size_bought",
+          "kept"
+        ],
+        "title": "OutcomeIn"
+      },
+      "OutcomeOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "fit_report_id": {
+            "type": "string",
+            "title": "Fit Report Id"
+          },
+          "size_bought": {
+            "type": "string",
+            "title": "Size Bought"
+          },
+          "kept": {
+            "type": "boolean",
+            "title": "Kept"
+          },
+          "zone": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Zone"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "direction": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Direction"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "preferences": {
+            "$ref": "#/components/schemas/PreferencesModel",
+            "description": "Preferences after applying the nudge"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "fit_report_id",
+          "size_bought",
+          "kept",
+          "zone",
+          "direction",
+          "preferences",
+          "created_at"
+        ],
+        "title": "OutcomeOut"
+      },
+      "PositionModel": {
+        "properties": {
+          "landmark": {
+            "type": "string",
+            "title": "Landmark"
+          },
+          "offset_cm": {
+            "type": "number",
+            "title": "Offset Cm"
+          },
+          "text": {
+            "type": "string",
+            "title": "Text"
+          }
+        },
+        "type": "object",
+        "required": [
+          "landmark",
+          "offset_cm",
+          "text"
+        ],
+        "title": "PositionModel"
+      },
+      "PreferencesModel": {
+        "properties": {
+          "shift_cm": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "propertyNames": {
+              "$ref": "#/components/schemas/Zone"
+            },
+            "type": "object",
+            "title": "Shift Cm"
+          }
+        },
+        "type": "object",
+        "title": "PreferencesModel"
+      },
+      "ProductCheckIn": {
+        "properties": {
+          "url": {
+            "type": "string",
+            "maxLength": 2048,
+            "minLength": 4,
+            "title": "Url",
+            "description": "The product page URL as shared"
+          },
+          "garment_kind": {
+            "$ref": "#/components/schemas/GarmentKind",
+            "default": "tee"
+          },
+          "refresh": {
+            "type": "boolean",
+            "title": "Refresh",
+            "description": "Re-run extraction even if a chart exists",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "url"
+        ],
+        "title": "ProductCheckIn"
+      },
+      "ProductOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "brand": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/BrandOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "url_canonical": {
+            "type": "string",
+            "title": "Url Canonical"
+          },
+          "url_original": {
+            "type": "string",
+            "title": "Url Original"
+          },
+          "title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Title"
+          },
+          "fabric_composition": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fabric Composition"
+          },
+          "stretch_class": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/StretchClass"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "cut": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Cut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "garment_kind": {
+            "$ref": "#/components/schemas/GarmentKind"
+          },
+          "chart": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SizeChartOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "fetched_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fetched At"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "brand",
+          "url_canonical",
+          "url_original",
+          "title",
+          "fabric_composition",
+          "stretch_class",
+          "cut",
+          "garment_kind",
+          "chart",
+          "fetched_at",
+          "created_at"
+        ],
+        "title": "ProductOut"
+      },
+      "SizeChartOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "status": {
+            "$ref": "#/components/schemas/SizeChartStatus"
+          },
+          "size_labels": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Size Labels"
+          },
+          "warnings": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Warnings"
+          },
+          "unmapped_measures": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Unmapped Measures"
+          },
+          "model_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model Id"
+          },
+          "error": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error"
+          },
+          "extracted_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Extracted At"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "status",
+          "size_labels",
+          "warnings",
+          "unmapped_measures",
+          "model_id",
+          "error",
+          "extracted_at",
+          "created_at"
+        ],
+        "title": "SizeChartOut"
+      },
+      "SizeChartStatus": {
+        "type": "string",
+        "enum": [
+          "pending",
+          "ok",
+          "needs_review",
+          "failed",
+          "not_found"
+        ],
+        "title": "SizeChartStatus",
+        "description": "``styleid_schema.ChartStatus`` plus the queued state."
+      },
+      "SizeResultModel": {
+        "properties": {
+          "size_label": {
+            "type": "string",
+            "title": "Size Label"
+          },
+          "zones": {
+            "items": {
+              "$ref": "#/components/schemas/ZoneResultModel"
+            },
+            "type": "array",
+            "title": "Zones"
+          },
+          "score": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Score"
+          },
+          "excluded_reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Excluded Reason"
+          }
+        },
+        "type": "object",
+        "required": [
+          "size_label",
+          "zones",
+          "score"
+        ],
+        "title": "SizeResultModel"
+      },
+      "Source": {
+        "type": "string",
+        "enum": [
+          "flatlay",
+          "chart",
+          "brand_ease_estimate",
+          "manual",
+          "lidar",
+          "photo",
+          "size_anchor"
+        ],
+        "title": "Source",
+        "description": "Where a measurement came from. Carried on every value."
+      },
+      "StretchClass": {
+        "type": "string",
+        "enum": [
+          "rigid_woven",
+          "woven_elastane",
+          "cotton_jersey",
+          "jersey_elastane"
+        ],
+        "title": "StretchClass"
+      },
+      "TokenResponse": {
+        "properties": {
+          "access_token": {
+            "type": "string",
+            "title": "Access Token"
+          },
+          "token_type": {
+            "type": "string",
+            "title": "Token Type",
+            "default": "bearer"
+          },
+          "expires_in": {
+            "type": "integer",
+            "title": "Expires In"
+          },
+          "user_id": {
+            "type": "string",
+            "title": "User Id"
+          },
+          "is_new_user": {
+            "type": "boolean",
+            "title": "Is New User"
+          }
+        },
+        "type": "object",
+        "required": [
+          "access_token",
+          "expires_in",
+          "user_id",
+          "is_new_user"
+        ],
+        "title": "TokenResponse"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "Zone": {
+        "type": "string",
+        "enum": [
+          "chest",
+          "shoulder",
+          "waist",
+          "hem",
+          "bicep",
+          "collar",
+          "length",
+          "sleeve"
+        ],
+        "title": "Zone",
+        "description": "Fit zones reported to the user. Ease zones get a label; position zones get a position."
+      },
+      "ZoneResultModel": {
+        "properties": {
+          "zone": {
+            "$ref": "#/components/schemas/Zone"
+          },
+          "label": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Label"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "basis": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Basis"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "ease_cm": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ease Cm"
+          },
+          "delta_vs_ref_cm": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Delta Vs Ref Cm"
+          },
+          "position": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PositionModel"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "confidence": {
+            "$ref": "#/components/schemas/Confidence"
+          }
+        },
+        "type": "object",
+        "required": [
+          "zone",
+          "label",
+          "basis",
+          "confidence"
+        ],
+        "title": "ZoneResultModel"
+      }
+    }
+  }
+}

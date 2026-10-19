@@ -1,0 +1,119 @@
+{
+  "page_title": "Oxford Shirt Blue",
+  "model_id": "recorded",
+  "extraction": {
+    "found": true,
+    "chart_kind": "body",
+    "measure_basis": "unknown",
+    "unit": "in",
+    "rows": [
+      {
+        "size_label": "S",
+        "cells": [
+          {
+            "measure": "Neck",
+            "value": 14.25,
+            "unit": null
+          },
+          {
+            "measure": "Chest",
+            "value": 35,
+            "unit": null
+          },
+          {
+            "measure": "Waist",
+            "value": 29,
+            "unit": null
+          },
+          {
+            "measure": "Sleeve",
+            "value": 32.5,
+            "unit": null
+          }
+        ]
+      },
+      {
+        "size_label": "M",
+        "cells": [
+          {
+            "measure": "Neck",
+            "value": 15.25,
+            "unit": null
+          },
+          {
+            "measure": "Chest",
+            "value": 39,
+            "unit": null
+          },
+          {
+            "measure": "Waist",
+            "value": 33,
+            "unit": null
+          },
+          {
+            "measure": "Sleeve",
+            "value": 33.5,
+            "unit": null
+          }
+        ]
+      },
+      {
+        "size_label": "L",
+        "cells": [
+          {
+            "measure": "Neck",
+            "value": 16.25,
+            "unit": null
+          },
+          {
+            "measure": "Chest",
+            "value": 43,
+            "unit": null
+          },
+          {
+            "measure": "Waist",
+            "value": 37,
+            "unit": null
+          },
+          {
+            "measure": "Sleeve",
+            "value": 34.5,
+            "unit": null
+          }
+        ]
+      },
+      {
+        "size_label": "XL",
+        "cells": [
+          {
+            "measure": "Neck",
+            "value": 17.25,
+            "unit": null
+          },
+          {
+            "measure": "Chest",
+            "value": 47,
+            "unit": null
+          },
+          {
+            "measure": "Waist",
+            "value": 41,
+            "unit": null
+          },
+          {
+            "measure": "Sleeve",
+            "value": 35.5,
+            "unit": null
+          }
+        ]
+      }
+    ],
+    "fabric_composition": "100% cotton oxford",
+    "knit_or_woven": "woven",
+    "cut": null,
+    "length_from": "unknown",
+    "sleeve_from": "unknown",
+    "notes": "Cells were ranges; values are midpoints.",
+    "confidence": "medium"
+  }
+}

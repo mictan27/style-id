@@ -1,0 +1,25 @@
+{
+  "description": "User owns a grey cotton tee in M and checks a new cotton tee. Each size is 2 cm wider flat. The M matches the reference and stays regular. The regular band is 8 cm wide and the reference sits mid-band, so one size up (+4 cm around) reaches the relaxed boundary.",
+  "body": null,
+  "references": [
+    {"kind": "tee", "stretch": "cotton_jersey", "size_label": "M", "fit_tag": "regular",
+     "measurements": {"chest_width": 50, "shoulder_width": 44, "hem_width": 49, "length": 70, "sleeve_length": 20}}
+  ],
+  "candidates": [
+    {"size_label": "S", "stretch": "cotton_jersey", "source": "chart", "measurements": {"chest_width": 48, "shoulder_width": 42, "hem_width": 47, "length": 68, "sleeve_length": 18}},
+    {"size_label": "M", "stretch": "cotton_jersey", "source": "chart", "measurements": {"chest_width": 50, "shoulder_width": 44, "hem_width": 49, "length": 70, "sleeve_length": 20}},
+    {"size_label": "L", "stretch": "cotton_jersey", "source": "chart", "measurements": {"chest_width": 52, "shoulder_width": 46, "hem_width": 51, "length": 72, "sleeve_length": 21}},
+    {"size_label": "XL", "stretch": "cotton_jersey", "source": "chart", "measurements": {"chest_width": 54, "shoulder_width": 48, "hem_width": 53, "length": 74, "sleeve_length": 22}}
+  ],
+  "expected": {
+    "pick": "M",
+    "runner_up": "L",
+    "labels": {
+      "S": {"chest": "regular", "shoulder": "fitted"},
+      "M": {"chest": "regular", "shoulder": "regular"},
+      "L": {"chest": "relaxed", "shoulder": "relaxed"},
+      "XL": {"chest": "relaxed", "shoulder": "relaxed"}
+    },
+    "excluded": []
+  }
+}

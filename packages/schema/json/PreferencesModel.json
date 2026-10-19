@@ -1,0 +1,33 @@
+{
+  "$defs": {
+    "Zone": {
+      "description": "Fit zones reported to the user. Ease zones get a label; position zones get a position.",
+      "enum": [
+        "chest",
+        "shoulder",
+        "waist",
+        "hem",
+        "bicep",
+        "collar",
+        "length",
+        "sleeve"
+      ],
+      "title": "Zone",
+      "type": "string"
+    }
+  },
+  "properties": {
+    "shift_cm": {
+      "additionalProperties": {
+        "type": "number"
+      },
+      "propertyNames": {
+        "$ref": "#/$defs/Zone"
+      },
+      "title": "Shift Cm",
+      "type": "object"
+    }
+  },
+  "title": "PreferencesModel",
+  "type": "object"
+}

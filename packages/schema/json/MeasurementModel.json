@@ -1,0 +1,49 @@
+{
+  "$defs": {
+    "Confidence": {
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ],
+      "title": "Confidence",
+      "type": "string"
+    },
+    "Source": {
+      "description": "Where a measurement came from. Carried on every value.",
+      "enum": [
+        "flatlay",
+        "chart",
+        "brand_ease_estimate",
+        "manual",
+        "lidar",
+        "photo",
+        "size_anchor"
+      ],
+      "title": "Source",
+      "type": "string"
+    }
+  },
+  "description": "One number in cm with where it came from and how much to trust it.",
+  "properties": {
+    "confidence": {
+      "$ref": "#/$defs/Confidence",
+      "default": "medium"
+    },
+    "source": {
+      "$ref": "#/$defs/Source"
+    },
+    "value_cm": {
+      "exclusiveMaximum": 400,
+      "exclusiveMinimum": 0,
+      "title": "Value Cm",
+      "type": "number"
+    }
+  },
+  "required": [
+    "value_cm",
+    "source"
+  ],
+  "title": "MeasurementModel",
+  "type": "object"
+}

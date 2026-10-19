@@ -1,0 +1,41 @@
+name: ci
+on:
+  push: { branches: [main] }
+  pull_request:
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env: { POSTGRES_USER: styleid, POSTGRES_PASSWORD: styleid, POSTGRES_DB: styleid }
+        ports: ["5432:5432"]
+        options: --health-cmd "pg_isready -U styleid" --health-interval 5s --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with: { enable-cache: true }
+      - run: uv sync --all-packages
+      - run: uv run ruff check . && uv run ruff format --check .
+      - run: uv run mypy packages/fitengine/src packages/schema/src packages/bodyfit/src packages/calibration/src packages/chartextract/src services/api/src
+      - run: uv run pytest -q
+      - name: integration tests on Postgres
+        env: { DATABASE_URL: "postgresql+psycopg://styleid:styleid@localhost:5432/styleid" }
+        run: uv run pytest services/api -q
+      - name: schema export is up to date
+        run: uv run python packages/schema/scripts/export_json_schema.py && git diff --exit-code packages/schema/json
+
+  mobile:
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: apps/mobile } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with: { version: 10 }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: pnpm, cache-dependency-path: apps/mobile/pnpm-lock.yaml }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
+      - run: pnpm lint
+      - run: pnpm test -- --ci

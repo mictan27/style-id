@@ -1,0 +1,11 @@
+{
+  "name": "ar-capture",
+  "version": "0.1.0",
+  "private": true,
+  "description": "style.id local Expo Module: ARKit flat-lay capture (metric scale from the floor plane) and LiDAR body scan keyframes.",
+  "main": "index.ts",
+  "types": "index.ts",
+  "license": "UNLICENSED",
+  "author": "style.id",
+  "homepage": "https://style.id"
+}

@@ -1,0 +1,74 @@
+{
+  "title": "Merino Crew Sweater",
+  "url": "https://harborknits.example/collections/all/products/merino-crew",
+  "garment_kind": "sweater",
+  "status": "ok",
+  "stretch": "jersey_elastane",
+  "classification": {
+    "chart_kind": "garment",
+    "measure_basis": "circumference",
+    "unit": "cm"
+  },
+  "sizes": [
+    {
+      "size_label": "XS",
+      "length_from_center_back": true,
+      "sleeve_from_center_back": true,
+      "measurements": {
+        "chest_width": 46.0,
+        "hem_width": 44.0,
+        "length": 64,
+        "sleeve_length": 78,
+        "shoulder_width": 40
+      }
+    },
+    {
+      "size_label": "S",
+      "length_from_center_back": true,
+      "sleeve_from_center_back": true,
+      "measurements": {
+        "chest_width": 48.0,
+        "hem_width": 46.0,
+        "length": 66,
+        "sleeve_length": 80,
+        "shoulder_width": 42
+      }
+    },
+    {
+      "size_label": "M",
+      "length_from_center_back": true,
+      "sleeve_from_center_back": true,
+      "measurements": {
+        "chest_width": 50.0,
+        "hem_width": 48.0,
+        "length": 68,
+        "sleeve_length": 82,
+        "shoulder_width": 44
+      }
+    },
+    {
+      "size_label": "L",
+      "length_from_center_back": true,
+      "sleeve_from_center_back": true,
+      "measurements": {
+        "chest_width": 53.0,
+        "hem_width": 51.0,
+        "length": 70,
+        "sleeve_length": 84,
+        "shoulder_width": 46
+      }
+    },
+    {
+      "size_label": "XL",
+      "length_from_center_back": true,
+      "sleeve_from_center_back": true,
+      "measurements": {
+        "chest_width": 56.0,
+        "hem_width": 54.0,
+        "length": 72,
+        "sleeve_length": 86,
+        "shoulder_width": 48
+      }
+    }
+  ]
+}
