@@ -33,17 +33,21 @@ export function CmField({
   value,
   onChange,
   hint,
+  accessibilityLabel,
 }: {
   label: string;
   value: string;
   onChange: (text: string) => void;
   hint?: string;
+  /** Spoken name when the visible label is elsewhere (e.g. a field guide drawing). */
+  accessibilityLabel?: string;
 }) {
   const parsed = value.trim() === '' ? null : Number(value.replace(',', '.'));
   const invalid = parsed !== null && (!Number.isFinite(parsed) || parsed <= 0 || parsed >= 400);
   return (
     <TextField
       label={label}
+      accessibilityLabel={accessibilityLabel ?? label}
       value={value}
       onChangeText={onChange}
       keyboardType="decimal-pad"

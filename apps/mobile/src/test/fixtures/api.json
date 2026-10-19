@@ -1,0 +1,1735 @@
+{
+  "routes": [
+    {
+      "body": {
+        "brand": {
+          "domain": "shop.example.com",
+          "id": "00000000-0000-4000-8000-000000000001",
+          "name": "shop.example.com"
+        },
+        "chart": {
+          "created_at": "2026-10-19T09:00:00",
+          "error": null,
+          "extracted_at": "2026-10-19T09:00:00",
+          "id": "00000000-0000-4000-8000-000000000002",
+          "model_id": "fixture-extractor",
+          "size_labels": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ],
+          "status": "ok",
+          "unmapped_measures": [],
+          "warnings": []
+        },
+        "created_at": "2026-10-19T09:00:00",
+        "cut": "set_in",
+        "fabric_composition": "100% cotton, 240 gsm",
+        "fetched_at": "2026-10-19T09:00:00",
+        "garment_kind": "tee",
+        "id": "00000000-0000-4000-8000-000000000003",
+        "stretch_class": "cotton_jersey",
+        "title": null,
+        "url_canonical": "https://shop.example.com/products/heavyweight-tee?variant=123",
+        "url_original": "https://shop.example.com/products/heavyweight-tee?variant=123"
+      },
+      "method": "POST",
+      "path": "/v1/products/check",
+      "status": 200
+    },
+    {
+      "body": {
+        "body_record_id": "00000000-0000-4000-8000-000000000004",
+        "created_at": "2026-10-19T09:00:00",
+        "id": "00000000-0000-4000-8000-000000000005",
+        "product": {
+          "brand": {
+            "domain": "shop.example.com",
+            "id": "00000000-0000-4000-8000-000000000001",
+            "name": "shop.example.com"
+          },
+          "chart": {
+            "created_at": "2026-10-19T09:00:00",
+            "error": null,
+            "extracted_at": "2026-10-19T09:00:00",
+            "id": "00000000-0000-4000-8000-000000000002",
+            "model_id": "fixture-extractor",
+            "size_labels": [
+              "S",
+              "M",
+              "L",
+              "XL"
+            ],
+            "status": "ok",
+            "unmapped_measures": [],
+            "warnings": []
+          },
+          "created_at": "2026-10-19T09:00:00",
+          "cut": "set_in",
+          "fabric_composition": "100% cotton, 240 gsm",
+          "fetched_at": "2026-10-19T09:00:00",
+          "garment_kind": "tee",
+          "id": "00000000-0000-4000-8000-000000000003",
+          "stretch_class": "cotton_jersey",
+          "title": null,
+          "url_canonical": "https://shop.example.com/products/heavyweight-tee?variant=123",
+          "url_original": "https://shop.example.com/products/heavyweight-tee?variant=123"
+        },
+        "reference_garment_id": "00000000-0000-4000-8000-000000000006",
+        "report": {
+          "diffs_cm": {
+            "bicep": -2.0,
+            "chest": -6.0,
+            "hem": -6.0,
+            "length": -2.0,
+            "shoulder": -2.0,
+            "sleeve": -1.0
+          },
+          "engine_version": "0.1.0",
+          "overall_confidence": "medium",
+          "pick": {
+            "excluded_reason": null,
+            "score": 17.5,
+            "size_label": "M",
+            "zones": [
+              {
+                "basis": "reference",
+                "confidence": "high",
+                "delta_vs_ref_cm": 2.0,
+                "ease_cm": 8.0,
+                "label": "regular",
+                "position": null,
+                "zone": "chest"
+              },
+              {
+                "basis": "reference",
+                "confidence": "high",
+                "delta_vs_ref_cm": 0.0,
+                "ease_cm": 1.0,
+                "label": "regular",
+                "position": null,
+                "zone": "shoulder"
+              },
+              {
+                "basis": "reference",
+                "confidence": "high",
+                "delta_vs_ref_cm": 2.0,
+                "ease_cm": 6.0,
+                "label": "regular",
+                "position": null,
+                "zone": "hem"
+              },
+              {
+                "basis": "reference",
+                "confidence": "medium",
+                "delta_vs_ref_cm": 0.0,
+                "ease_cm": 7.0,
+                "label": "regular",
+                "position": null,
+                "zone": "bicep"
+              },
+              {
+                "basis": "body",
+                "confidence": "high",
+                "delta_vs_ref_cm": 1.0,
+                "ease_cm": null,
+                "label": null,
+                "position": {
+                  "landmark": "hip line",
+                  "offset_cm": 7.0,
+                  "text": "hem lands 7 cm below your hip line"
+                },
+                "zone": "length"
+              },
+              {
+                "basis": "reference",
+                "confidence": "medium",
+                "delta_vs_ref_cm": 0.0,
+                "ease_cm": null,
+                "label": null,
+                "position": null,
+                "zone": "sleeve"
+              }
+            ]
+          },
+          "reference_size_label": "M",
+          "runner_up": {
+            "excluded_reason": null,
+            "score": 84.5,
+            "size_label": "S",
+            "zones": [
+              {
+                "basis": "reference",
+                "confidence": "high",
+                "delta_vs_ref_cm": -4.0,
+                "ease_cm": 2.0,
+                "label": "regular",
+                "position": null,
+                "zone": "chest"
+              },
+              {
+                "basis": "reference",
+                "confidence": "high",
+                "delta_vs_ref_cm": -2.0,
+                "ease_cm": -1.0,
+                "label": "fitted",
+                "position": null,
+                "zone": "shoulder"
+              },
+              {
+                "basis": "reference",
+                "confidence": "high",
+                "delta_vs_ref_cm": -4.0,
+                "ease_cm": 0.0,
+                "label": "regular",
+                "position": null,
+                "zone": "hem"
+              },
+              {
+                "basis": "reference",
+                "confidence": "medium",
+                "delta_vs_ref_cm": -2.0,
+                "ease_cm": 5.0,
+                "label": "regular",
+                "position": null,
+                "zone": "bicep"
+              },
+              {
+                "basis": "body",
+                "confidence": "high",
+                "delta_vs_ref_cm": -1.0,
+                "ease_cm": null,
+                "label": null,
+                "position": {
+                  "landmark": "hip line",
+                  "offset_cm": 5.0,
+                  "text": "hem lands 5 cm below your hip line"
+                },
+                "zone": "length"
+              },
+              {
+                "basis": "reference",
+                "confidence": "medium",
+                "delta_vs_ref_cm": -1.0,
+                "ease_cm": null,
+                "label": null,
+                "position": null,
+                "zone": "sleeve"
+              }
+            ]
+          },
+          "sizes": [
+            {
+              "excluded_reason": null,
+              "score": 84.5,
+              "size_label": "S",
+              "zones": [
+                {
+                  "basis": "reference",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": -4.0,
+                  "ease_cm": 2.0,
+                  "label": "regular",
+                  "position": null,
+                  "zone": "chest"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": -2.0,
+                  "ease_cm": -1.0,
+                  "label": "fitted",
+                  "position": null,
+                  "zone": "shoulder"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": -4.0,
+                  "ease_cm": 0.0,
+                  "label": "regular",
+                  "position": null,
+                  "zone": "hem"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "medium",
+                  "delta_vs_ref_cm": -2.0,
+                  "ease_cm": 5.0,
+                  "label": "regular",
+                  "position": null,
+                  "zone": "bicep"
+                },
+                {
+                  "basis": "body",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": -1.0,
+                  "ease_cm": null,
+                  "label": null,
+                  "position": {
+                    "landmark": "hip line",
+                    "offset_cm": 5.0,
+                    "text": "hem lands 5 cm below your hip line"
+                  },
+                  "zone": "length"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "medium",
+                  "delta_vs_ref_cm": -1.0,
+                  "ease_cm": null,
+                  "label": null,
+                  "position": null,
+                  "zone": "sleeve"
+                }
+              ]
+            },
+            {
+              "excluded_reason": null,
+              "score": 17.5,
+              "size_label": "M",
+              "zones": [
+                {
+                  "basis": "reference",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": 2.0,
+                  "ease_cm": 8.0,
+                  "label": "regular",
+                  "position": null,
+                  "zone": "chest"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": 0.0,
+                  "ease_cm": 1.0,
+                  "label": "regular",
+                  "position": null,
+                  "zone": "shoulder"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": 2.0,
+                  "ease_cm": 6.0,
+                  "label": "regular",
+                  "position": null,
+                  "zone": "hem"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "medium",
+                  "delta_vs_ref_cm": 0.0,
+                  "ease_cm": 7.0,
+                  "label": "regular",
+                  "position": null,
+                  "zone": "bicep"
+                },
+                {
+                  "basis": "body",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": 1.0,
+                  "ease_cm": null,
+                  "label": null,
+                  "position": {
+                    "landmark": "hip line",
+                    "offset_cm": 7.0,
+                    "text": "hem lands 7 cm below your hip line"
+                  },
+                  "zone": "length"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "medium",
+                  "delta_vs_ref_cm": 0.0,
+                  "ease_cm": null,
+                  "label": null,
+                  "position": null,
+                  "zone": "sleeve"
+                }
+              ]
+            },
+            {
+              "excluded_reason": null,
+              "score": 288.5,
+              "size_label": "L",
+              "zones": [
+                {
+                  "basis": "reference",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": 8.0,
+                  "ease_cm": 14.0,
+                  "label": "relaxed",
+                  "position": null,
+                  "zone": "chest"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": 2.0,
+                  "ease_cm": 3.0,
+                  "label": "relaxed",
+                  "position": null,
+                  "zone": "shoulder"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": 8.0,
+                  "ease_cm": 12.0,
+                  "label": "relaxed",
+                  "position": null,
+                  "zone": "hem"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "medium",
+                  "delta_vs_ref_cm": 2.0,
+                  "ease_cm": 9.0,
+                  "label": "relaxed",
+                  "position": null,
+                  "zone": "bicep"
+                },
+                {
+                  "basis": "body",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": 3.0,
+                  "ease_cm": null,
+                  "label": null,
+                  "position": {
+                    "landmark": "hip line",
+                    "offset_cm": 9.0,
+                    "text": "hem lands 9 cm below your hip line"
+                  },
+                  "zone": "length"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "medium",
+                  "delta_vs_ref_cm": 1.0,
+                  "ease_cm": null,
+                  "label": null,
+                  "position": null,
+                  "zone": "sleeve"
+                }
+              ]
+            },
+            {
+              "excluded_reason": "shoulder seam sits 2.5 cm outside your shoulder point",
+              "score": null,
+              "size_label": "XL",
+              "zones": [
+                {
+                  "basis": "reference",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": 14.0,
+                  "ease_cm": 20.0,
+                  "label": "relaxed",
+                  "position": null,
+                  "zone": "chest"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": 4.0,
+                  "ease_cm": 5.0,
+                  "label": "relaxed",
+                  "position": null,
+                  "zone": "shoulder"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": 14.0,
+                  "ease_cm": 18.0,
+                  "label": "relaxed",
+                  "position": null,
+                  "zone": "hem"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "medium",
+                  "delta_vs_ref_cm": 4.0,
+                  "ease_cm": 11.0,
+                  "label": "relaxed",
+                  "position": null,
+                  "zone": "bicep"
+                },
+                {
+                  "basis": "body",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": 5.0,
+                  "ease_cm": null,
+                  "label": null,
+                  "position": {
+                    "landmark": "hip line",
+                    "offset_cm": 11.0,
+                    "text": "hem lands 11 cm below your hip line"
+                  },
+                  "zone": "length"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "medium",
+                  "delta_vs_ref_cm": 2.0,
+                  "ease_cm": null,
+                  "label": null,
+                  "position": null,
+                  "zone": "sleeve"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "method": "POST",
+      "path": "/v1/fit/reports",
+      "status": 201
+    },
+    {
+      "body": {
+        "created_at": "2026-10-19T09:00:00",
+        "direction": null,
+        "fit_report_id": "00000000-0000-4000-8000-000000000005",
+        "id": "00000000-0000-4000-8000-000000000007",
+        "kept": true,
+        "preferences": {
+          "shift_cm": {}
+        },
+        "size_bought": "M",
+        "zone": null
+      },
+      "method": "POST",
+      "path": "/v1/outcomes",
+      "status": 201
+    },
+    {
+      "body": {
+        "status": "ok",
+        "version": "0.1.0"
+      },
+      "method": "GET",
+      "path": "/v1/health",
+      "status": 200
+    },
+    {
+      "body": {
+        "created_at": "2026-10-19T09:00:00",
+        "dob_verified_18": true,
+        "email": null,
+        "id": "00000000-0000-4000-8000-000000000008",
+        "preferences": {
+          "shift_cm": {}
+        }
+      },
+      "method": "GET",
+      "path": "/v1/me",
+      "status": 200
+    },
+    {
+      "body": [
+        {
+          "created_at": "2026-10-19T09:00:00",
+          "cut": "set_in",
+          "fit_tag": "regular",
+          "id": "00000000-0000-4000-8000-000000000006",
+          "is_reference": true,
+          "kind": "tee",
+          "length_from_center_back": false,
+          "measurements": {
+            "bicep_width": {
+              "confidence": "medium",
+              "source": "flatlay",
+              "value_cm": 19.0
+            },
+            "chest_width": {
+              "confidence": "high",
+              "source": "flatlay",
+              "value_cm": 52.0
+            },
+            "hem_width": {
+              "confidence": "high",
+              "source": "flatlay",
+              "value_cm": 51.0
+            },
+            "length": {
+              "confidence": "high",
+              "source": "flatlay",
+              "value_cm": 70.0
+            },
+            "shoulder_width": {
+              "confidence": "high",
+              "source": "flatlay",
+              "value_cm": 46.0
+            },
+            "sleeve_length": {
+              "confidence": "medium",
+              "source": "flatlay",
+              "value_cm": 21.0
+            }
+          },
+          "name": "Grey everyday tee",
+          "size_label": "M",
+          "sleeve_from_center_back": false,
+          "stretch": "cotton_jersey",
+          "updated_at": "2026-10-19T09:00:00"
+        },
+        {
+          "created_at": "2026-10-19T09:00:00",
+          "cut": "raglan",
+          "fit_tag": "relaxed",
+          "id": "00000000-0000-4000-8000-000000000009",
+          "is_reference": false,
+          "kind": "sweater",
+          "length_from_center_back": false,
+          "measurements": {
+            "chest_width": {
+              "confidence": "medium",
+              "source": "manual",
+              "value_cm": 58.0
+            },
+            "length": {
+              "confidence": "medium",
+              "source": "manual",
+              "value_cm": 68.0
+            }
+          },
+          "name": "Navy crew knit",
+          "size_label": "L",
+          "sleeve_from_center_back": false,
+          "stretch": "jersey_elastane",
+          "updated_at": "2026-10-19T09:00:00"
+        }
+      ],
+      "method": "GET",
+      "path": "/v1/closet/garments",
+      "status": 200
+    },
+    {
+      "body": {
+        "created_at": "2026-10-19T09:00:00",
+        "cut": "set_in",
+        "fit_tag": "regular",
+        "id": "00000000-0000-4000-8000-000000000006",
+        "is_reference": true,
+        "kind": "tee",
+        "length_from_center_back": false,
+        "measurements": {
+          "bicep_width": {
+            "confidence": "medium",
+            "source": "flatlay",
+            "value_cm": 19.0
+          },
+          "chest_width": {
+            "confidence": "high",
+            "source": "flatlay",
+            "value_cm": 52.0
+          },
+          "hem_width": {
+            "confidence": "high",
+            "source": "flatlay",
+            "value_cm": 51.0
+          },
+          "length": {
+            "confidence": "high",
+            "source": "flatlay",
+            "value_cm": 70.0
+          },
+          "shoulder_width": {
+            "confidence": "high",
+            "source": "flatlay",
+            "value_cm": 46.0
+          },
+          "sleeve_length": {
+            "confidence": "medium",
+            "source": "flatlay",
+            "value_cm": 21.0
+          }
+        },
+        "name": "Grey everyday tee",
+        "size_label": "M",
+        "sleeve_from_center_back": false,
+        "stretch": "cotton_jersey",
+        "updated_at": "2026-10-19T09:00:00"
+      },
+      "method": "GET",
+      "path": "/v1/closet/garments/00000000-0000-4000-8000-000000000006",
+      "status": 200
+    },
+    {
+      "body": [],
+      "method": "GET",
+      "path": "/v1/closet/garments/00000000-0000-4000-8000-000000000006/landmark-corrections",
+      "status": 200
+    },
+    {
+      "body": {
+        "confirmed_at": "2026-10-19T09:00:00",
+        "created_at": "2026-10-19T09:00:00",
+        "id": "00000000-0000-4000-8000-000000000004",
+        "is_current": true,
+        "landmarks": {
+          "hip_line_cm": 64.0,
+          "waist_line_cm": 44.0,
+          "wrist_cm": 78.0
+        },
+        "measurements": {
+          "arm_length": {
+            "confidence": "high",
+            "source": "manual",
+            "value_cm": 62.0
+          },
+          "back_length": {
+            "confidence": "high",
+            "source": "manual",
+            "value_cm": 46.0
+          },
+          "bicep": {
+            "confidence": "high",
+            "source": "manual",
+            "value_cm": 31.0
+          },
+          "chest": {
+            "confidence": "high",
+            "source": "manual",
+            "value_cm": 98.0
+          },
+          "height": {
+            "confidence": "high",
+            "source": "manual",
+            "value_cm": 178.0
+          },
+          "hip": {
+            "confidence": "high",
+            "source": "manual",
+            "value_cm": 98.0
+          },
+          "neck": {
+            "confidence": "high",
+            "source": "manual",
+            "value_cm": 39.0
+          },
+          "shoulder": {
+            "confidence": "high",
+            "source": "manual",
+            "value_cm": 45.0
+          },
+          "waist": {
+            "confidence": "high",
+            "source": "manual",
+            "value_cm": 84.0
+          }
+        },
+        "mesh_blob_key": null,
+        "source": "manual"
+      },
+      "method": "GET",
+      "path": "/v1/body/records/current",
+      "status": 200
+    },
+    {
+      "body": {
+        "confirmed_at": "2026-10-19T09:00:00",
+        "created_at": "2026-10-19T09:00:00",
+        "id": "00000000-0000-4000-8000-000000000004",
+        "is_current": true,
+        "landmarks": {
+          "hip_line_cm": 64.0,
+          "waist_line_cm": 44.0,
+          "wrist_cm": 78.0
+        },
+        "measurements": {
+          "arm_length": {
+            "confidence": "high",
+            "source": "manual",
+            "value_cm": 62.0
+          },
+          "back_length": {
+            "confidence": "high",
+            "source": "manual",
+            "value_cm": 46.0
+          },
+          "bicep": {
+            "confidence": "high",
+            "source": "manual",
+            "value_cm": 31.0
+          },
+          "chest": {
+            "confidence": "high",
+            "source": "manual",
+            "value_cm": 98.0
+          },
+          "height": {
+            "confidence": "high",
+            "source": "manual",
+            "value_cm": 178.0
+          },
+          "hip": {
+            "confidence": "high",
+            "source": "manual",
+            "value_cm": 98.0
+          },
+          "neck": {
+            "confidence": "high",
+            "source": "manual",
+            "value_cm": 39.0
+          },
+          "shoulder": {
+            "confidence": "high",
+            "source": "manual",
+            "value_cm": 45.0
+          },
+          "waist": {
+            "confidence": "high",
+            "source": "manual",
+            "value_cm": 84.0
+          }
+        },
+        "mesh_blob_key": null,
+        "source": "manual"
+      },
+      "method": "GET",
+      "path": "/v1/body/records/00000000-0000-4000-8000-000000000004",
+      "status": 200
+    },
+    {
+      "body": {
+        "brand": {
+          "domain": "shop.example.com",
+          "id": "00000000-0000-4000-8000-000000000001",
+          "name": "shop.example.com"
+        },
+        "chart": {
+          "created_at": "2026-10-19T09:00:00",
+          "error": null,
+          "extracted_at": "2026-10-19T09:00:00",
+          "id": "00000000-0000-4000-8000-000000000002",
+          "model_id": "fixture-extractor",
+          "size_labels": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ],
+          "status": "ok",
+          "unmapped_measures": [],
+          "warnings": []
+        },
+        "created_at": "2026-10-19T09:00:00",
+        "cut": "set_in",
+        "fabric_composition": "100% cotton, 240 gsm",
+        "fetched_at": "2026-10-19T09:00:00",
+        "garment_kind": "tee",
+        "id": "00000000-0000-4000-8000-000000000003",
+        "stretch_class": "cotton_jersey",
+        "title": null,
+        "url_canonical": "https://shop.example.com/products/heavyweight-tee?variant=123",
+        "url_original": "https://shop.example.com/products/heavyweight-tee?variant=123"
+      },
+      "method": "GET",
+      "path": "/v1/products/00000000-0000-4000-8000-000000000003",
+      "status": 200
+    },
+    {
+      "body": [
+        {
+          "body_record_id": "00000000-0000-4000-8000-000000000004",
+          "created_at": "2026-10-19T09:00:00",
+          "id": "00000000-0000-4000-8000-000000000005",
+          "product": {
+            "brand": {
+              "domain": "shop.example.com",
+              "id": "00000000-0000-4000-8000-000000000001",
+              "name": "shop.example.com"
+            },
+            "chart": {
+              "created_at": "2026-10-19T09:00:00",
+              "error": null,
+              "extracted_at": "2026-10-19T09:00:00",
+              "id": "00000000-0000-4000-8000-000000000002",
+              "model_id": "fixture-extractor",
+              "size_labels": [
+                "S",
+                "M",
+                "L",
+                "XL"
+              ],
+              "status": "ok",
+              "unmapped_measures": [],
+              "warnings": []
+            },
+            "created_at": "2026-10-19T09:00:00",
+            "cut": "set_in",
+            "fabric_composition": "100% cotton, 240 gsm",
+            "fetched_at": "2026-10-19T09:00:00",
+            "garment_kind": "tee",
+            "id": "00000000-0000-4000-8000-000000000003",
+            "stretch_class": "cotton_jersey",
+            "title": null,
+            "url_canonical": "https://shop.example.com/products/heavyweight-tee?variant=123",
+            "url_original": "https://shop.example.com/products/heavyweight-tee?variant=123"
+          },
+          "reference_garment_id": "00000000-0000-4000-8000-000000000006",
+          "report": {
+            "diffs_cm": {
+              "bicep": -2.0,
+              "chest": -6.0,
+              "hem": -6.0,
+              "length": -2.0,
+              "shoulder": -2.0,
+              "sleeve": -1.0
+            },
+            "engine_version": "0.1.0",
+            "overall_confidence": "medium",
+            "pick": {
+              "excluded_reason": null,
+              "score": 17.5,
+              "size_label": "M",
+              "zones": [
+                {
+                  "basis": "reference",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": 2.0,
+                  "ease_cm": 8.0,
+                  "label": "regular",
+                  "position": null,
+                  "zone": "chest"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": 0.0,
+                  "ease_cm": 1.0,
+                  "label": "regular",
+                  "position": null,
+                  "zone": "shoulder"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": 2.0,
+                  "ease_cm": 6.0,
+                  "label": "regular",
+                  "position": null,
+                  "zone": "hem"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "medium",
+                  "delta_vs_ref_cm": 0.0,
+                  "ease_cm": 7.0,
+                  "label": "regular",
+                  "position": null,
+                  "zone": "bicep"
+                },
+                {
+                  "basis": "body",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": 1.0,
+                  "ease_cm": null,
+                  "label": null,
+                  "position": {
+                    "landmark": "hip line",
+                    "offset_cm": 7.0,
+                    "text": "hem lands 7 cm below your hip line"
+                  },
+                  "zone": "length"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "medium",
+                  "delta_vs_ref_cm": 0.0,
+                  "ease_cm": null,
+                  "label": null,
+                  "position": null,
+                  "zone": "sleeve"
+                }
+              ]
+            },
+            "reference_size_label": "M",
+            "runner_up": {
+              "excluded_reason": null,
+              "score": 84.5,
+              "size_label": "S",
+              "zones": [
+                {
+                  "basis": "reference",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": -4.0,
+                  "ease_cm": 2.0,
+                  "label": "regular",
+                  "position": null,
+                  "zone": "chest"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": -2.0,
+                  "ease_cm": -1.0,
+                  "label": "fitted",
+                  "position": null,
+                  "zone": "shoulder"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": -4.0,
+                  "ease_cm": 0.0,
+                  "label": "regular",
+                  "position": null,
+                  "zone": "hem"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "medium",
+                  "delta_vs_ref_cm": -2.0,
+                  "ease_cm": 5.0,
+                  "label": "regular",
+                  "position": null,
+                  "zone": "bicep"
+                },
+                {
+                  "basis": "body",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": -1.0,
+                  "ease_cm": null,
+                  "label": null,
+                  "position": {
+                    "landmark": "hip line",
+                    "offset_cm": 5.0,
+                    "text": "hem lands 5 cm below your hip line"
+                  },
+                  "zone": "length"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "medium",
+                  "delta_vs_ref_cm": -1.0,
+                  "ease_cm": null,
+                  "label": null,
+                  "position": null,
+                  "zone": "sleeve"
+                }
+              ]
+            },
+            "sizes": [
+              {
+                "excluded_reason": null,
+                "score": 84.5,
+                "size_label": "S",
+                "zones": [
+                  {
+                    "basis": "reference",
+                    "confidence": "high",
+                    "delta_vs_ref_cm": -4.0,
+                    "ease_cm": 2.0,
+                    "label": "regular",
+                    "position": null,
+                    "zone": "chest"
+                  },
+                  {
+                    "basis": "reference",
+                    "confidence": "high",
+                    "delta_vs_ref_cm": -2.0,
+                    "ease_cm": -1.0,
+                    "label": "fitted",
+                    "position": null,
+                    "zone": "shoulder"
+                  },
+                  {
+                    "basis": "reference",
+                    "confidence": "high",
+                    "delta_vs_ref_cm": -4.0,
+                    "ease_cm": 0.0,
+                    "label": "regular",
+                    "position": null,
+                    "zone": "hem"
+                  },
+                  {
+                    "basis": "reference",
+                    "confidence": "medium",
+                    "delta_vs_ref_cm": -2.0,
+                    "ease_cm": 5.0,
+                    "label": "regular",
+                    "position": null,
+                    "zone": "bicep"
+                  },
+                  {
+                    "basis": "body",
+                    "confidence": "high",
+                    "delta_vs_ref_cm": -1.0,
+                    "ease_cm": null,
+                    "label": null,
+                    "position": {
+                      "landmark": "hip line",
+                      "offset_cm": 5.0,
+                      "text": "hem lands 5 cm below your hip line"
+                    },
+                    "zone": "length"
+                  },
+                  {
+                    "basis": "reference",
+                    "confidence": "medium",
+                    "delta_vs_ref_cm": -1.0,
+                    "ease_cm": null,
+                    "label": null,
+                    "position": null,
+                    "zone": "sleeve"
+                  }
+                ]
+              },
+              {
+                "excluded_reason": null,
+                "score": 17.5,
+                "size_label": "M",
+                "zones": [
+                  {
+                    "basis": "reference",
+                    "confidence": "high",
+                    "delta_vs_ref_cm": 2.0,
+                    "ease_cm": 8.0,
+                    "label": "regular",
+                    "position": null,
+                    "zone": "chest"
+                  },
+                  {
+                    "basis": "reference",
+                    "confidence": "high",
+                    "delta_vs_ref_cm": 0.0,
+                    "ease_cm": 1.0,
+                    "label": "regular",
+                    "position": null,
+                    "zone": "shoulder"
+                  },
+                  {
+                    "basis": "reference",
+                    "confidence": "high",
+                    "delta_vs_ref_cm": 2.0,
+                    "ease_cm": 6.0,
+                    "label": "regular",
+                    "position": null,
+                    "zone": "hem"
+                  },
+                  {
+                    "basis": "reference",
+                    "confidence": "medium",
+                    "delta_vs_ref_cm": 0.0,
+                    "ease_cm": 7.0,
+                    "label": "regular",
+                    "position": null,
+                    "zone": "bicep"
+                  },
+                  {
+                    "basis": "body",
+                    "confidence": "high",
+                    "delta_vs_ref_cm": 1.0,
+                    "ease_cm": null,
+                    "label": null,
+                    "position": {
+                      "landmark": "hip line",
+                      "offset_cm": 7.0,
+                      "text": "hem lands 7 cm below your hip line"
+                    },
+                    "zone": "length"
+                  },
+                  {
+                    "basis": "reference",
+                    "confidence": "medium",
+                    "delta_vs_ref_cm": 0.0,
+                    "ease_cm": null,
+                    "label": null,
+                    "position": null,
+                    "zone": "sleeve"
+                  }
+                ]
+              },
+              {
+                "excluded_reason": null,
+                "score": 288.5,
+                "size_label": "L",
+                "zones": [
+                  {
+                    "basis": "reference",
+                    "confidence": "high",
+                    "delta_vs_ref_cm": 8.0,
+                    "ease_cm": 14.0,
+                    "label": "relaxed",
+                    "position": null,
+                    "zone": "chest"
+                  },
+                  {
+                    "basis": "reference",
+                    "confidence": "high",
+                    "delta_vs_ref_cm": 2.0,
+                    "ease_cm": 3.0,
+                    "label": "relaxed",
+                    "position": null,
+                    "zone": "shoulder"
+                  },
+                  {
+                    "basis": "reference",
+                    "confidence": "high",
+                    "delta_vs_ref_cm": 8.0,
+                    "ease_cm": 12.0,
+                    "label": "relaxed",
+                    "position": null,
+                    "zone": "hem"
+                  },
+                  {
+                    "basis": "reference",
+                    "confidence": "medium",
+                    "delta_vs_ref_cm": 2.0,
+                    "ease_cm": 9.0,
+                    "label": "relaxed",
+                    "position": null,
+                    "zone": "bicep"
+                  },
+                  {
+                    "basis": "body",
+                    "confidence": "high",
+                    "delta_vs_ref_cm": 3.0,
+                    "ease_cm": null,
+                    "label": null,
+                    "position": {
+                      "landmark": "hip line",
+                      "offset_cm": 9.0,
+                      "text": "hem lands 9 cm below your hip line"
+                    },
+                    "zone": "length"
+                  },
+                  {
+                    "basis": "reference",
+                    "confidence": "medium",
+                    "delta_vs_ref_cm": 1.0,
+                    "ease_cm": null,
+                    "label": null,
+                    "position": null,
+                    "zone": "sleeve"
+                  }
+                ]
+              },
+              {
+                "excluded_reason": "shoulder seam sits 2.5 cm outside your shoulder point",
+                "score": null,
+                "size_label": "XL",
+                "zones": [
+                  {
+                    "basis": "reference",
+                    "confidence": "high",
+                    "delta_vs_ref_cm": 14.0,
+                    "ease_cm": 20.0,
+                    "label": "relaxed",
+                    "position": null,
+                    "zone": "chest"
+                  },
+                  {
+                    "basis": "reference",
+                    "confidence": "high",
+                    "delta_vs_ref_cm": 4.0,
+                    "ease_cm": 5.0,
+                    "label": "relaxed",
+                    "position": null,
+                    "zone": "shoulder"
+                  },
+                  {
+                    "basis": "reference",
+                    "confidence": "high",
+                    "delta_vs_ref_cm": 14.0,
+                    "ease_cm": 18.0,
+                    "label": "relaxed",
+                    "position": null,
+                    "zone": "hem"
+                  },
+                  {
+                    "basis": "reference",
+                    "confidence": "medium",
+                    "delta_vs_ref_cm": 4.0,
+                    "ease_cm": 11.0,
+                    "label": "relaxed",
+                    "position": null,
+                    "zone": "bicep"
+                  },
+                  {
+                    "basis": "body",
+                    "confidence": "high",
+                    "delta_vs_ref_cm": 5.0,
+                    "ease_cm": null,
+                    "label": null,
+                    "position": {
+                      "landmark": "hip line",
+                      "offset_cm": 11.0,
+                      "text": "hem lands 11 cm below your hip line"
+                    },
+                    "zone": "length"
+                  },
+                  {
+                    "basis": "reference",
+                    "confidence": "medium",
+                    "delta_vs_ref_cm": 2.0,
+                    "ease_cm": null,
+                    "label": null,
+                    "position": null,
+                    "zone": "sleeve"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "method": "GET",
+      "path": "/v1/fit/reports",
+      "status": 200
+    },
+    {
+      "body": {
+        "body_record_id": "00000000-0000-4000-8000-000000000004",
+        "created_at": "2026-10-19T09:00:00",
+        "id": "00000000-0000-4000-8000-000000000005",
+        "product": {
+          "brand": {
+            "domain": "shop.example.com",
+            "id": "00000000-0000-4000-8000-000000000001",
+            "name": "shop.example.com"
+          },
+          "chart": {
+            "created_at": "2026-10-19T09:00:00",
+            "error": null,
+            "extracted_at": "2026-10-19T09:00:00",
+            "id": "00000000-0000-4000-8000-000000000002",
+            "model_id": "fixture-extractor",
+            "size_labels": [
+              "S",
+              "M",
+              "L",
+              "XL"
+            ],
+            "status": "ok",
+            "unmapped_measures": [],
+            "warnings": []
+          },
+          "created_at": "2026-10-19T09:00:00",
+          "cut": "set_in",
+          "fabric_composition": "100% cotton, 240 gsm",
+          "fetched_at": "2026-10-19T09:00:00",
+          "garment_kind": "tee",
+          "id": "00000000-0000-4000-8000-000000000003",
+          "stretch_class": "cotton_jersey",
+          "title": null,
+          "url_canonical": "https://shop.example.com/products/heavyweight-tee?variant=123",
+          "url_original": "https://shop.example.com/products/heavyweight-tee?variant=123"
+        },
+        "reference_garment_id": "00000000-0000-4000-8000-000000000006",
+        "report": {
+          "diffs_cm": {
+            "bicep": -2.0,
+            "chest": -6.0,
+            "hem": -6.0,
+            "length": -2.0,
+            "shoulder": -2.0,
+            "sleeve": -1.0
+          },
+          "engine_version": "0.1.0",
+          "overall_confidence": "medium",
+          "pick": {
+            "excluded_reason": null,
+            "score": 17.5,
+            "size_label": "M",
+            "zones": [
+              {
+                "basis": "reference",
+                "confidence": "high",
+                "delta_vs_ref_cm": 2.0,
+                "ease_cm": 8.0,
+                "label": "regular",
+                "position": null,
+                "zone": "chest"
+              },
+              {
+                "basis": "reference",
+                "confidence": "high",
+                "delta_vs_ref_cm": 0.0,
+                "ease_cm": 1.0,
+                "label": "regular",
+                "position": null,
+                "zone": "shoulder"
+              },
+              {
+                "basis": "reference",
+                "confidence": "high",
+                "delta_vs_ref_cm": 2.0,
+                "ease_cm": 6.0,
+                "label": "regular",
+                "position": null,
+                "zone": "hem"
+              },
+              {
+                "basis": "reference",
+                "confidence": "medium",
+                "delta_vs_ref_cm": 0.0,
+                "ease_cm": 7.0,
+                "label": "regular",
+                "position": null,
+                "zone": "bicep"
+              },
+              {
+                "basis": "body",
+                "confidence": "high",
+                "delta_vs_ref_cm": 1.0,
+                "ease_cm": null,
+                "label": null,
+                "position": {
+                  "landmark": "hip line",
+                  "offset_cm": 7.0,
+                  "text": "hem lands 7 cm below your hip line"
+                },
+                "zone": "length"
+              },
+              {
+                "basis": "reference",
+                "confidence": "medium",
+                "delta_vs_ref_cm": 0.0,
+                "ease_cm": null,
+                "label": null,
+                "position": null,
+                "zone": "sleeve"
+              }
+            ]
+          },
+          "reference_size_label": "M",
+          "runner_up": {
+            "excluded_reason": null,
+            "score": 84.5,
+            "size_label": "S",
+            "zones": [
+              {
+                "basis": "reference",
+                "confidence": "high",
+                "delta_vs_ref_cm": -4.0,
+                "ease_cm": 2.0,
+                "label": "regular",
+                "position": null,
+                "zone": "chest"
+              },
+              {
+                "basis": "reference",
+                "confidence": "high",
+                "delta_vs_ref_cm": -2.0,
+                "ease_cm": -1.0,
+                "label": "fitted",
+                "position": null,
+                "zone": "shoulder"
+              },
+              {
+                "basis": "reference",
+                "confidence": "high",
+                "delta_vs_ref_cm": -4.0,
+                "ease_cm": 0.0,
+                "label": "regular",
+                "position": null,
+                "zone": "hem"
+              },
+              {
+                "basis": "reference",
+                "confidence": "medium",
+                "delta_vs_ref_cm": -2.0,
+                "ease_cm": 5.0,
+                "label": "regular",
+                "position": null,
+                "zone": "bicep"
+              },
+              {
+                "basis": "body",
+                "confidence": "high",
+                "delta_vs_ref_cm": -1.0,
+                "ease_cm": null,
+                "label": null,
+                "position": {
+                  "landmark": "hip line",
+                  "offset_cm": 5.0,
+                  "text": "hem lands 5 cm below your hip line"
+                },
+                "zone": "length"
+              },
+              {
+                "basis": "reference",
+                "confidence": "medium",
+                "delta_vs_ref_cm": -1.0,
+                "ease_cm": null,
+                "label": null,
+                "position": null,
+                "zone": "sleeve"
+              }
+            ]
+          },
+          "sizes": [
+            {
+              "excluded_reason": null,
+              "score": 84.5,
+              "size_label": "S",
+              "zones": [
+                {
+                  "basis": "reference",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": -4.0,
+                  "ease_cm": 2.0,
+                  "label": "regular",
+                  "position": null,
+                  "zone": "chest"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": -2.0,
+                  "ease_cm": -1.0,
+                  "label": "fitted",
+                  "position": null,
+                  "zone": "shoulder"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": -4.0,
+                  "ease_cm": 0.0,
+                  "label": "regular",
+                  "position": null,
+                  "zone": "hem"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "medium",
+                  "delta_vs_ref_cm": -2.0,
+                  "ease_cm": 5.0,
+                  "label": "regular",
+                  "position": null,
+                  "zone": "bicep"
+                },
+                {
+                  "basis": "body",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": -1.0,
+                  "ease_cm": null,
+                  "label": null,
+                  "position": {
+                    "landmark": "hip line",
+                    "offset_cm": 5.0,
+                    "text": "hem lands 5 cm below your hip line"
+                  },
+                  "zone": "length"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "medium",
+                  "delta_vs_ref_cm": -1.0,
+                  "ease_cm": null,
+                  "label": null,
+                  "position": null,
+                  "zone": "sleeve"
+                }
+              ]
+            },
+            {
+              "excluded_reason": null,
+              "score": 17.5,
+              "size_label": "M",
+              "zones": [
+                {
+                  "basis": "reference",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": 2.0,
+                  "ease_cm": 8.0,
+                  "label": "regular",
+                  "position": null,
+                  "zone": "chest"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": 0.0,
+                  "ease_cm": 1.0,
+                  "label": "regular",
+                  "position": null,
+                  "zone": "shoulder"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": 2.0,
+                  "ease_cm": 6.0,
+                  "label": "regular",
+                  "position": null,
+                  "zone": "hem"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "medium",
+                  "delta_vs_ref_cm": 0.0,
+                  "ease_cm": 7.0,
+                  "label": "regular",
+                  "position": null,
+                  "zone": "bicep"
+                },
+                {
+                  "basis": "body",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": 1.0,
+                  "ease_cm": null,
+                  "label": null,
+                  "position": {
+                    "landmark": "hip line",
+                    "offset_cm": 7.0,
+                    "text": "hem lands 7 cm below your hip line"
+                  },
+                  "zone": "length"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "medium",
+                  "delta_vs_ref_cm": 0.0,
+                  "ease_cm": null,
+                  "label": null,
+                  "position": null,
+                  "zone": "sleeve"
+                }
+              ]
+            },
+            {
+              "excluded_reason": null,
+              "score": 288.5,
+              "size_label": "L",
+              "zones": [
+                {
+                  "basis": "reference",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": 8.0,
+                  "ease_cm": 14.0,
+                  "label": "relaxed",
+                  "position": null,
+                  "zone": "chest"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": 2.0,
+                  "ease_cm": 3.0,
+                  "label": "relaxed",
+                  "position": null,
+                  "zone": "shoulder"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": 8.0,
+                  "ease_cm": 12.0,
+                  "label": "relaxed",
+                  "position": null,
+                  "zone": "hem"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "medium",
+                  "delta_vs_ref_cm": 2.0,
+                  "ease_cm": 9.0,
+                  "label": "relaxed",
+                  "position": null,
+                  "zone": "bicep"
+                },
+                {
+                  "basis": "body",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": 3.0,
+                  "ease_cm": null,
+                  "label": null,
+                  "position": {
+                    "landmark": "hip line",
+                    "offset_cm": 9.0,
+                    "text": "hem lands 9 cm below your hip line"
+                  },
+                  "zone": "length"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "medium",
+                  "delta_vs_ref_cm": 1.0,
+                  "ease_cm": null,
+                  "label": null,
+                  "position": null,
+                  "zone": "sleeve"
+                }
+              ]
+            },
+            {
+              "excluded_reason": "shoulder seam sits 2.5 cm outside your shoulder point",
+              "score": null,
+              "size_label": "XL",
+              "zones": [
+                {
+                  "basis": "reference",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": 14.0,
+                  "ease_cm": 20.0,
+                  "label": "relaxed",
+                  "position": null,
+                  "zone": "chest"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": 4.0,
+                  "ease_cm": 5.0,
+                  "label": "relaxed",
+                  "position": null,
+                  "zone": "shoulder"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": 14.0,
+                  "ease_cm": 18.0,
+                  "label": "relaxed",
+                  "position": null,
+                  "zone": "hem"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "medium",
+                  "delta_vs_ref_cm": 4.0,
+                  "ease_cm": 11.0,
+                  "label": "relaxed",
+                  "position": null,
+                  "zone": "bicep"
+                },
+                {
+                  "basis": "body",
+                  "confidence": "high",
+                  "delta_vs_ref_cm": 5.0,
+                  "ease_cm": null,
+                  "label": null,
+                  "position": {
+                    "landmark": "hip line",
+                    "offset_cm": 11.0,
+                    "text": "hem lands 11 cm below your hip line"
+                  },
+                  "zone": "length"
+                },
+                {
+                  "basis": "reference",
+                  "confidence": "medium",
+                  "delta_vs_ref_cm": 2.0,
+                  "ease_cm": null,
+                  "label": null,
+                  "position": null,
+                  "zone": "sleeve"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "method": "GET",
+      "path": "/v1/fit/reports/00000000-0000-4000-8000-000000000005",
+      "status": 200
+    }
+  ]
+}

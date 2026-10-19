@@ -14,6 +14,7 @@ import {
   CUT_OPTIONS,
   FABRIC_OPTIONS,
   FABRIC_TO_STRETCH,
+  FIELD_NAMES,
   FIELDS_FOR_KIND,
   FIT_TAG_OPTIONS,
   KIND_OPTIONS,
@@ -98,7 +99,7 @@ function ManualEntryForm() {
       {fields.map((field) => (
         <View key={field} style={styles.fieldBlock}>
           <FieldGuide field={field} size={96} />
-          <CmField label={''} value={values[field] ?? ''} onChange={(text) => setValues((v) => ({ ...v, [field]: text }))} />
+          <CmField label={''} accessibilityLabel={`${FIELD_NAMES[field]}, cm`} value={values[field] ?? ''} onChange={(text) => setValues((v) => ({ ...v, [field]: text }))} />
         </View>
       ))}
 

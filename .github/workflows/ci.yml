@@ -25,6 +25,11 @@ jobs:
         run: uv run pytest services/api -q
       - name: schema export is up to date
         run: uv run python packages/schema/scripts/export_json_schema.py && git diff --exit-code packages/schema/json
+      - name: mobile OpenAPI document and screen-test fixtures are up to date
+        run: |
+          uv run python -m styleid_api.openapi > apps/mobile/openapi.json
+          uv run python services/api/scripts/export_mobile_fixtures.py
+          git diff --exit-code apps/mobile/openapi.json apps/mobile/src/test/fixtures
 
   mobile:
     runs-on: ubuntu-latest
@@ -39,3 +44,5 @@ jobs:
       - run: pnpm typecheck
       - run: pnpm lint
       - run: pnpm test -- --ci
+      - name: generated API types match openapi.json
+        run: pnpm gen:api && git diff --exit-code src/api/types.gen.ts
