@@ -43,7 +43,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   scheme: 'styleid',
   icon: './assets/images/icon.png',
   userInterfaceStyle: 'automatic',
-  platforms: ['ios', 'android'],
+  // web: development preview for layout checks and screenshots (pnpm screenshots); not shipped.
+  platforms: ['ios', 'android', 'web'],
+  web: { bundler: 'metro', output: 'single' },
   ios: {
     bundleIdentifier: BUNDLE_ID,
     supportsTablet: false,

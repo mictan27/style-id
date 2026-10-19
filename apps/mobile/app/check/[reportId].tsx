@@ -8,7 +8,7 @@ import { Card, ErrorNotice } from '@/components/Card';
 import { ConfidenceBadge } from '@/components/Chips';
 import { Screen } from '@/components/Screen';
 import { ZoneRow } from '@/components/ZoneRow';
-import { formatDiff } from '@/fit/format';
+import { formatDiff, productDisplayName } from '@/fit/format';
 import { colors, typography } from '@/theme';
 
 export default function FitReportScreen() {
@@ -27,7 +27,7 @@ export default function FitReportScreen() {
 
   return (
     <Screen>
-      <Text style={typography.title}>{fit.product.title ?? 'Fit report'}</Text>
+      <Text style={typography.title}>{productDisplayName(fit.product)}</Text>
       <Text style={typography.caption}>
         {fit.product.brand?.name ?? fit.product.url_canonical}
         {r.reference_size_label ? ` · you wear ${r.reference_size_label} in your reference` : ''}

@@ -5,9 +5,31 @@ import { create } from 'zustand';
 const TOKEN_KEY = 'styleid.access_token';
 const DEV_USER_KEY = 'styleid.dev_user';
 
+/**
+ * Keychain on iOS. The web build is a development preview only (screenshots, layout
+ * checks), so it keeps the session in localStorage; a reload must not sign you out.
+ */
+const webStorage = {
+  get(key: string): string | null {
+    try {
+      return globalThis.localStorage?.getItem(key) ?? null;
+    } catch {
+      return null;
+    }
+  },
+  set(key: string, value: string | null): void {
+    try {
+      if (value === null) globalThis.localStorage?.removeItem(key);
+      else globalThis.localStorage?.setItem(key, value);
+    } catch {
+      // Storage blocked (private mode); keep in memory only.
+    }
+  },
+};
+
 const secure = {
   async get(key: string): Promise<string | null> {
-    if (Platform.OS === 'web') return null;
+    if (Platform.OS === 'web') return webStorage.get(key);
     try {
       return await SecureStore.getItemAsync(key);
     } catch {
@@ -15,7 +37,7 @@ const secure = {
     }
   },
   async set(key: string, value: string | null): Promise<void> {
-    if (Platform.OS === 'web') return;
+    if (Platform.OS === 'web') return webStorage.set(key, value);
     try {
       if (value === null) await SecureStore.deleteItemAsync(key);
       else await SecureStore.setItemAsync(key, value);

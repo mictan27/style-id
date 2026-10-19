@@ -114,6 +114,7 @@ describe('product check', () => {
   test('past reports show the pick and runner-up', async () => {
     const { screen } = await renderApp('/check');
     expect(await screen.findByText('Pick: M · then S')).toBeTruthy();
+    expect(screen.getByText('Heavyweight tee')).toBeTruthy();
   });
 });
 
@@ -121,6 +122,8 @@ describe('fit report', () => {
   test('shows pick, runner-up, what changes between them and excluded sizes', async () => {
     const { screen } = await renderApp(`/check/${report.id}`);
     expect(await screen.findByText('Our pick')).toBeTruthy();
+    expect(screen.getByText('Heavyweight tee')).toBeTruthy();
+    expect(screen.queryByText('n/a')).toBeNull();
     expect(screen.getByText('Runner-up')).toBeTruthy();
     expect(screen.getByText('What would change: M → S')).toBeTruthy();
     expect(screen.getByText(/XL: shoulder seam sits 2.5 cm outside your shoulder point/)).toBeTruthy();

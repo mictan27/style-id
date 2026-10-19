@@ -8,6 +8,7 @@ import {
   formatEase,
   formatEaseShort,
   labelColor,
+  productDisplayName,
   zoneDisplayName,
 } from './format';
 
@@ -95,5 +96,18 @@ describe('labels, zones, confidence', () => {
   it('formats what-would-change diffs', () => {
     expect(formatDiff('chest', 3)).toBe('Chest: +3 cm');
     expect(formatDiff('length', 0)).toBe('Length: no change');
+  });
+});
+
+describe('productDisplayName', () => {
+  it('prefers the stored title', () => {
+    expect(productDisplayName({ title: 'Heavyweight Tee', url_canonical: 'https://x.com/products/a' })).toBe('Heavyweight Tee');
+  });
+  it('falls back to the product slug', () => {
+    expect(productDisplayName({ title: null, url_canonical: 'https://shop.example.com/products/heavyweight-tee' })).toBe('Heavyweight tee');
+    expect(productDisplayName({ url_original: 'https://www.brand.com/en/p/oxford_shirt.html?x=1' })).toBe('Oxford shirt');
+  });
+  it('falls back to the host name', () => {
+    expect(productDisplayName({ url_canonical: 'https://www.brand.com/products/12345' })).toBe('brand.com');
   });
 });

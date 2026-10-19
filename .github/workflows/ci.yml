@@ -46,3 +46,12 @@ jobs:
       - run: pnpm test -- --ci
       - name: generated API types match openapi.json
         run: pnpm gen:api && git diff --exit-code src/api/types.gen.ts
+      - name: web screenshots (every screen renders without page errors)
+        run: npx playwright install --with-deps chromium && pnpm screenshots
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: screenshots
+          path: |
+            apps/mobile/screenshots/
+            apps/mobile/test-results/

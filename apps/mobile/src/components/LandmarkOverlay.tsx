@@ -6,7 +6,7 @@ import { GestureDetector, usePanGesture } from 'react-native-gesture-handler';
 import { LANDMARK_LABELS, type LandmarkName, type Landmarks, type Point } from '@/capture/geometry';
 import { colors, spacing, typography } from '@/theme';
 
-import { svgPolygon } from './FieldGuide';
+import { svgPolygon } from './fieldGuideGeometry';
 
 /** Landmark pairs drawn as measurement lines. */
 const LINES: [LandmarkName, LandmarkName][] = [

@@ -53,7 +53,9 @@ export default function AvatarScreen() {
       <BodyAvatar zones={zones} showReference={showReference} reference={reference} />
       <Toggle label="Show reference outline" value={showReference} onChange={setShowReference} />
       <View style={styles.legend}>
-        {(Object.entries(zones) as [Zone, Label | null][]).map(([zone, label]) => (
+        {(Object.entries(zones) as [Zone, Label | null][])
+          .filter(([, label]) => label !== null)
+          .map(([zone, label]) => (
           <View key={zone} style={styles.legendItem}>
             <Text style={typography.caption}>{zoneDisplayName(zone)}</Text>
             <LabelChip label={label} />

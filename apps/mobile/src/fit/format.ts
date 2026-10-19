@@ -119,3 +119,27 @@ export function formatDiff(zone: Zone, diffCm: number): string {
   if (roundTo(diffCm, 1) === 0) return `${zoneDisplayName(zone)}: no change`;
   return `${zoneDisplayName(zone)}: ${formatCm(diffCm, { signed: true })}`;
 }
+
+/**
+ * A readable product name. Extraction does not store page titles yet, so fall back to
+ * the last meaningful URL path segment ("heavyweight-tee" -> "Heavyweight tee"), then
+ * the host name.
+ */
+export function productDisplayName(product: { title?: string | null; url_canonical?: string | null; url_original?: string | null }): string {
+  if (product.title?.trim()) return product.title.trim();
+  const raw = product.url_canonical ?? product.url_original ?? '';
+  try {
+    const url = new URL(raw);
+    const segment = url.pathname
+      .split('/')
+      .filter((part) => part && !/^(products?|p|item|shop|collections)$/i.test(part) && !/^\d+$/.test(part))
+      .pop();
+    if (segment) {
+      const words = decodeURIComponent(segment).replace(/\.[a-z]+$/i, '').replace(/[-_+]+/g, ' ').trim();
+      if (words) return words.charAt(0).toUpperCase() + words.slice(1);
+    }
+    return url.hostname.replace(/^www\./, '');
+  } catch {
+    return raw || 'Product';
+  }
+}

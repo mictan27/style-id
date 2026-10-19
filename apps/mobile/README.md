@@ -21,6 +21,16 @@ pnpm ios                                   # expo run:ios (Mac + Xcode only)
 pnpm gen:api                               # regenerate src/api/types.gen.ts from openapi.json
 ```
 
+## Seeing screens without a phone
+
+```bash
+pnpm test           # Jest screen tests: the real router and screens against fixture API data
+pnpm screenshots    # Playwright: one PNG per screen in screenshots/ (iPhone-sized, 2x)
+pnpm web            # the web preview in a browser at http://localhost:8099 (needs the API running)
+```
+
+Both use `src/test/fixtures/api.json`, exported from the real API and fit engine by `services/api/scripts/export_mobile_fixtures.py`. The web preview is for layout, copy and data only: ARKit, Vision and the landmark overlay are iPhone-only, and those screens say so. It is not shipped.
+
 ## Why Expo Go does not work
 
 Three things in this app need native code that is not in Expo Go:

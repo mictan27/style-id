@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import type { ZoneResultModel } from '@/api/schema';
 import { LabelChip } from '@/components/Chips';
-import { formatEase, formatEaseShort, zoneDisplayName } from '@/fit/format';
+import { formatCm, formatEase, formatEaseShort, zoneDisplayName } from '@/fit/format';
 import { colors, spacing, typography } from '@/theme';
 
 /** One fit-report row: zone name, label chip (or position offset), and the plain-language sentence. */
@@ -11,11 +11,14 @@ export function ZoneRow({ zone, referenceName }: { zone: ZoneResultModel; refere
     <View style={styles.zoneRow}>
       <View style={styles.zoneHead}>
         <Text style={[typography.body, { fontWeight: '600' }]}>{zoneDisplayName(zone.zone)}</Text>
-        {zone.position ? (
-          <Text style={typography.caption}>{formatEaseShort(zone, referenceName)}</Text>
-        ) : (
+        {zone.label ? (
           <LabelChip label={zone.label} />
-        )}
+        ) : zone.position ? (
+          <Text style={typography.caption}>{formatEaseShort(zone, referenceName)}</Text>
+        ) : zone.delta_vs_ref_cm !== null && zone.delta_vs_ref_cm !== undefined ? (
+          // Length-type zones compared only with the reference have no tight/loose label.
+          <Text style={typography.caption}>{formatCm(zone.delta_vs_ref_cm, { signed: true })}</Text>
+        ) : null}
       </View>
       <Text style={typography.caption}>{formatEase(zone, referenceName)}</Text>
     </View>

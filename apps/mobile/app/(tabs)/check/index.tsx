@@ -9,6 +9,7 @@ import { Card, EmptyState, ErrorNotice } from '@/components/Card';
 import { ConfidenceBadge } from '@/components/Chips';
 import { Screen } from '@/components/Screen';
 import { TextField } from '@/components/TextField';
+import { productDisplayName } from '@/fit/format';
 import { spacing, typography } from '@/theme';
 
 export default function CheckScreen() {
@@ -68,7 +69,7 @@ export default function CheckScreen() {
 }
 
 function ReportCard({ report, onPress }: { report: FitReport; onPress: () => void }) {
-  const title = report.product.title ?? report.product.url_original;
+  const title = productDisplayName(report.product);
   return (
     <Card onPress={onPress}>
       <Text style={typography.body} numberOfLines={2}>
