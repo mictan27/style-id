@@ -1,4 +1,5 @@
 import * as AppleAuthentication from 'expo-apple-authentication';
+import Constants from 'expo-constants';
 import { useEffect, useState } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 
@@ -20,10 +21,13 @@ export default function SignInScreen() {
   const setDevUser = useAuthStore((s) => s.setDevUser);
   const appleSignIn = useAppleSignIn();
 
+  // Free-signing builds have no Sign in with Apple entitlement; use the developer sign-in.
+  const freeSigning = Constants.expoConfig?.extra?.freeSigning === true;
+
   useEffect(() => {
-    if (Platform.OS !== 'ios') return;
+    if (Platform.OS !== 'ios' || freeSigning) return;
     AppleAuthentication.isAvailableAsync().then(setAppleAvailable).catch(() => setAppleAvailable(false));
-  }, []);
+  }, [freeSigning]);
 
   const signInWithApple = async () => {
     setError(null);
@@ -60,7 +64,11 @@ export default function SignInScreen() {
         onChange={setIsAdult}
       />
 
-      {appleAvailable ? (
+      {freeSigning ? (
+        <Text style={typography.caption}>
+          This is a free-signing build without Sign in with Apple. Use the developer sign-in below.
+        </Text>
+      ) : appleAvailable ? (
         <AppleAuthentication.AppleAuthenticationButton
           buttonType={AppleAuthentication.AppleAuthenticationButtonType.SIGN_IN}
           buttonStyle={AppleAuthentication.AppleAuthenticationButtonStyle.BLACK}

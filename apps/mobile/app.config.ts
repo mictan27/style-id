@@ -1,11 +1,43 @@
 import type { ConfigContext, ExpoConfig } from 'expo/config';
 
-const BUNDLE_ID = 'id.style.app';
+/**
+ * Free-signing builds: `STYLEID_FREE_SIGNING=1 npx expo run:ios --device` on a Mac with a
+ * free Apple ID (Xcode "Personal Team"). Personal teams cannot sign Sign in with Apple or
+ * App Groups, so those builds leave out the Apple sign-in entitlement and the share
+ * extension (which needs an App Group). Everything else, including ARKit and Vision, works.
+ * Free builds expire after 7 days; rerun the command to reinstall.
+ */
+const FREE_SIGNING = process.env.STYLEID_FREE_SIGNING === '1';
+
+/**
+ * A bundle id is owned by the first Apple team that registers it, so free builds use
+ * their own: set IOS_BUNDLE_ID (e.g. `id.style.app.dev.william`) if Xcode says the id
+ * is taken.
+ */
+const BUNDLE_ID = process.env.IOS_BUNDLE_ID ?? (FREE_SIGNING ? 'id.style.app.dev' : 'id.style.app');
+
+/** Expo project `styleid` (expo.dev). Override with EAS_PROJECT_ID for a fork. */
+const EAS_PROJECT_ID = process.env.EAS_PROJECT_ID ?? '4f8c56ad-6f9b-4ca0-ba87-02cc083624fe';
+
+const shareIntentPlugin: [string, Record<string, unknown>] = [
+  'expo-share-intent',
+  {
+    // Only URLs and web pages: shoppers share a product page from Safari or a shop app.
+    iosActivationRules: {
+      NSExtensionActivationSupportsWebURLWithMaxCount: 1,
+      NSExtensionActivationSupportsWebPageWithMaxCount: 1,
+      NSExtensionActivationSupportsText: true,
+    },
+    iosShareExtensionName: 'Check fit with style.id',
+    iosAppGroupIdentifier: `group.${BUNDLE_ID}`,
+    androidIntentFilters: ['text/*'],
+  },
+];
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: 'style.id',
-  slug: 'style-id',
+  slug: 'styleid',
   version: '0.1.0',
   orientation: 'portrait',
   scheme: 'styleid',
@@ -15,7 +47,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ios: {
     bundleIdentifier: BUNDLE_ID,
     supportsTablet: false,
-    usesAppleSignIn: true,
+    usesAppleSignIn: !FREE_SIGNING,
     infoPlist: {
       NSCameraUsageDescription:
         'style.id uses the camera to measure a flat-laid garment and, optionally, to scan your body for a better fit estimate.',
@@ -36,7 +68,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   plugins: [
     'expo-router',
-    'expo-apple-authentication',
+    ...(FREE_SIGNING ? [] : ['expo-apple-authentication']),
     'expo-secure-store',
     'expo-dev-client',
     [
@@ -47,20 +79,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         recordAudioAndroid: false,
       },
     ],
-    [
-      'expo-share-intent',
-      {
-        // Only URLs and web pages: shoppers share a product page from Safari or a shop app.
-        iosActivationRules: {
-          NSExtensionActivationSupportsWebURLWithMaxCount: 1,
-          NSExtensionActivationSupportsWebPageWithMaxCount: 1,
-          NSExtensionActivationSupportsText: true,
-        },
-        iosShareExtensionName: 'Check fit with style.id',
-        iosAppGroupIdentifier: `group.${BUNDLE_ID}`,
-        androidIntentFilters: ['text/*'],
-      },
-    ],
+    ...(FREE_SIGNING ? [] : [shareIntentPlugin]),
     [
       'expo-splash-screen',
       {
@@ -73,14 +92,15 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     // these plugins only add the native build settings each module needs.
     './modules/ar-capture/app.plugin.js',
     './modules/vision-masks/app.plugin.js',
+    ...(FREE_SIGNING ? ['./plugins/withFreeSigning.js'] : []),
   ],
   experiments: {
     typedRoutes: false,
   },
   extra: {
+    freeSigning: FREE_SIGNING,
     eas: {
-      // Filled in by `eas init`.
-      projectId: process.env.EAS_PROJECT_ID,
+      projectId: EAS_PROJECT_ID,
     },
   },
 });

@@ -21,48 +21,53 @@ The product is described in the MVP proposal (Oct 2026). Stack and structure dec
 
 ## Run it end to end
 
-There is no simulator path on Linux: the app needs an iPhone running an EAS development build, talking to the API on this box over Wi-Fi. Expo Go cannot load it (two Swift modules, Skia, share extension).
+The app runs on an iPhone, talking to the API over Wi-Fi. Expo Go cannot open it, because it has custom Swift modules (ARKit capture, Vision masks). You need your own build of the app, and iOS builds need a Mac with Xcode. A paid Apple Developer account is not required to develop.
 
-**1. Backend on this machine (2 minutes)**
+| Path | Cost | What works |
+|---|---|---|
+| A. Your iPhone, built on your Mac with a free Apple ID | free | Everything except Sign in with Apple and the Safari share sheet. Reinstall every 7 days. |
+| B. iOS Simulator on your Mac | free | All screens; no camera, ARKit or LiDAR. |
+| C. EAS cloud build | $99/yr Apple account | Everything, no Mac needed, shareable with testers. |
+
+**1. Start the API** (any machine on the same Wi-Fi as the phone; no Postgres, Docker or API key needed)
 
 ```bash
-export PATH="$HOME/.local/bin:$PATH"          # uv
 uv sync --all-packages
 uv run alembic -c services/api/alembic.ini upgrade head
 uv run uvicorn styleid_api.main:app --host 0.0.0.0 --port 8000 --reload
+curl -H 'X-Dev-User: alice' localhost:8000/v1/me      # smoke test; http://localhost:8000/docs for the UI
 ```
 
-Open `http://localhost:8000/docs` for the interactive API. Everything works with SQLite and dev auth; no Postgres, Docker or API key needed. Chart extraction against Claude only runs when `ANTHROPIC_API_KEY` is exported.
+Chart extraction against Claude only runs when `ANTHROPIC_API_KEY` is exported.
 
-Smoke test without the app:
+**2A. Free build on your iPhone (Mac)**
 
-```bash
-curl -H 'X-Dev-User: alice' localhost:8000/v1/me
-```
-
-**2. One-time phone build (needs Expo account + Apple Developer account, ~15 min in the cloud)**
+One-time setup: install Xcode from the App Store, open it once, then Xcode, Settings, Accounts, and add your normal Apple ID. On the iPhone, enable Settings, Privacy & Security, Developer Mode (it appears after the first install attempt; the phone restarts).
 
 ```bash
 cd apps/mobile
 pnpm install
-pnpm dlx eas-cli login
-pnpm dlx eas-cli init                # links the project, sets EAS_PROJECT_ID
-pnpm dlx eas-cli device:create       # register your iPhone UDID (follow the link on the phone)
-pnpm build:dev                       # eas build --profile development --platform ios
+STYLEID_FREE_SIGNING=1 npx expo run:ios --device     # pick your plugged-in iPhone from the list
 ```
 
-Install the build on the phone from the link EAS prints. Rebuild only when native code or `app.config.ts` changes; JS changes hot-reload.
+If Xcode reports a signing error, open `apps/mobile/ios/styleid.xcworkspace`, select the `styleid` target, Signing & Capabilities, and choose your "Personal Team". If it says the bundle id is taken, rerun with `IOS_BUNDLE_ID=id.style.app.dev.<yourname>`. On the phone, trust the developer profile under Settings, General, VPN & Device Management.
 
-**3. Run the app**
+`STYLEID_FREE_SIGNING=1` leaves out the two capabilities free accounts cannot sign: Sign in with Apple (use the developer sign-in field instead) and the share extension (paste product links into the Check tab instead). The build expires after 7 days; rerun the command to reinstall. You only rerun it when native code or `app.config.ts` changes; day to day, `pnpm start` is enough and JS changes hot-reload.
+
+**2B. Simulator (Mac)**: `cd apps/mobile && pnpm install && pnpm ios`.
+
+**2C. EAS cloud build** (paid Apple account, no Mac): `pnpm dlx eas-cli login`, `pnpm dlx eas-cli device:create` to register the phone, then `pnpm build:dev` and install from the link. The Expo project (`styleid`) is already linked in `app.config.ts`.
+
+**3. Point the app at the API**
 
 ```bash
 cd apps/mobile
-EXPO_PUBLIC_API_URL=http://<this-machine-LAN-IP>:8000 pnpm start
+EXPO_PUBLIC_API_URL=http://<api-machine-LAN-IP>:8000 pnpm start
 ```
 
-Open the dev build on the phone and scan the QR code (phone and this box on the same network; `hostname -I` gives the IP). On the sign-in screen use the developer field with any handle, which sends `X-Dev-User` instead of an Apple token.
+Open style.id on the phone; it connects to Metro (scan the QR code if asked). On the sign-in screen use the developer field with any handle, which sends `X-Dev-User` instead of an Apple token.
 
-**With a Mac instead:** `pnpm ios` runs `expo run:ios` in the Simulator (Xcode 16+). Camera, LiDAR and Vision screens show a "needs an iPhone build" message there; closet manual entry, product checks, fit reports and outcomes all work.
+Do not commit `apps/mobile/ios/`: `expo run:ios` generates it and it is gitignored.
 
 ## Develop
 
